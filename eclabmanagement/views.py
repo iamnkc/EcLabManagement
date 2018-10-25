@@ -11,3 +11,5 @@ def index(request):
     return render(request,'eclabmanagement/index.html')
 def cart(request):
     return render(request,'eclabmanagement/cart.html')
+def studentprofile(request):
+    return render(request,'eclabmanagement/student-profile.html')
