@@ -25,7 +25,7 @@ SECRET_KEY = 'zaw--(*2gg+l*0$zr90(z3=42jt6le!l$f88muq*t(9s9=5_d^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'ase_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ec_lab_management',
-        'USER': 'ec_lab_management',
-        'PASSWORD': 'group3',
+        'NAME': 'elm',
+        'USER': 'ec_lab_user',
+        'PASSWORD': 'group3@ASE',
         'HOST': 'localhost',
         'PORT': '',
     }
