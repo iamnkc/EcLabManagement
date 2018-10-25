@@ -1,0 +1,77 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Search Results</h2>
+						<!--<div class="page_link">
+							<a href="index.html">Home</a>
+							<a href="cart.html">Cart</a>
+						</div> -->
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Cart Area =================-->
+        <section class="cart_area">
+        	<div class="container">
+        	<center>
+        		<div class="cart_inner">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Product</th>
+									<th scope="col">Type Of Component</th>
+									<th scope="col">Quantity</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for i in list %}
+									<tr>
+									<td>
+										<div class="media">
+											
+											<div class="media-body">
+												<p>raspberry_3</p>
+											</div>
+										</div>
+									</td>
+									<td><p>raspberry</p></td>
+									<td>
+										<p>10</p>
+									</td>
+									
+									<td>
+										<h5><div class="main_btn">Open</div></h5>
+									</td>
+								</tr>
+
+
+								{% endfor %}
+
+								<!-- <tr class="">
+									<td><div class="checkout_btn_inner">
+										<a class="main_btn" href="#">Continue Shopping</a>
+										</div></td>
+									<td></td>
+									<td>
+										<div class="checkout_btn_inner">
+											<a class="main_btn" href="#">Proceed to checkout</a>
+										</div>
+									</td>
+								</tr> -->
+							</tbody>
+						</table>
+					</div>
+        		</div>
+        	</div>
+        	</center>
+        </section>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+                <div class="container">
+                    <div class="banner_content text-center">
+                        <h2>Search Results</h2>
+                        <!--<div class="page_link">
+                            <a href="index.html">Home</a>
+                            <a href="cart.html">Cart</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        <section class="cart_area">
+            <div class="container">
+                <div class="table-responsive table-bordered ">
+                <table class="table ">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">S-no</th>
+                            <th scope="col">Student name</th>
+                            <th scope="col">Packet</th>
+                            <th scope="col">Due Amount</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+        </div>
+        </section>
+{% endblock %}
