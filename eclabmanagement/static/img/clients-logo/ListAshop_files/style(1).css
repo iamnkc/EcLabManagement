@@ -15,7 +15,7 @@ Table of Content:
 11/ team 
 12/ blog
 13/ video  
-14/ features
+14/ features  
 15/ career  
 16/ contact 
 17/ footer
@@ -4555,7 +4555,7 @@ h6 {
   position: absolute;
   right: 0px;
   top: 14px;
-  @include transition;
+  @icnlude transition;
 }
 
 .review_item .media .media-body .reply_btn:hover {
