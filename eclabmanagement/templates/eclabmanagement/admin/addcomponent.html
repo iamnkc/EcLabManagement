@@ -1,0 +1,54 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="banner_area ">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Add component</h2>
+                    <!--<div class="page_link">
+                        <a href="index.html">Home</a>
+                        <a href="cart.html">Cart</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart_area">
+    <div class="container" style="padding-top:0px;">
+        <div class="card border-primary text-center">
+            <div class="card-header">
+                <h2></h2>
+            </div>
+            <div  class="card-body border-primary ">
+                        <form class="form-horizontal " action="/action_page.php">
+                            <div class="form-group">
+                            <label class="control-label col-sm-2" for="comp_name">Component-name:</label>
+                            <div class="col-sm-12">
+                                <input type="email" class="form-control" id="comp_name" placeholder="Enter Component name">
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="control-label col-sm-2" for="comp_type">Component-type:</label>
+                            <div class="col-sm-12"> 
+                                <input type="password" class="form-control" id="comp_type" placeholder="Enter component type">
+                            </div>
+                            </div>
+                            <div class="form-group"> 
+                            <div class="col-sm-offset-5 col-sm-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            </div>
+                        </form>
+
+            </div>
+            <div class="card-footer text-muted">
+                
+            </div>
+        </div>
+    </div>
+    </section>
+
+{% endblock %}

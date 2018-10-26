@@ -22,3 +22,12 @@ def searchresult(request):
 
 def issuedcompdet(request):
 	return render(request,'eclabmanagement/admin/issuedcompdet.html')
+
+def addcomp(request):
+    return render(request,'eclabmanagement/admin/addcomponent.html')
+
+def comptypelist(request):
+    return render(request,'eclabmanagement/admin/comptypelist.html')
+
+def compdescription(request):
+    return render(request,'eclabmanagement/admin/compdescription.html')
