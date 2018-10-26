@@ -1,0 +1,108 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+{% block style %}
+    .details_packet{
+        font-size : 30px;
+        font-weight: 700;
+
+    }
+{% endblock %}
+{% block content %}
+    <section class="banner_area ">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Packet Details</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart_area">
+        <div class="container">
+                <form class = "col-md-10 offset-md-1">
+                    <div class="form-group">
+                        <label for="exampleInputPacket">Packet id:</label>
+                        <input type="text" class="form-control" id="exampleInputPacket" aria-describedby="emailHelp" placeholder="packet id">
+                        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputStudent">Student name:</label>
+                        <input type="text" class="form-control disabled" id="exampleInputStudent" placeholder="Student name">
+                    </div>
+                    <div class="form-group">
+                            <label for="exampleInputRoll">Roll Number:</label>
+                            <input type="text" class="form-control" id="exampleInputRoll" placeholder="Roll Number">
+                    </div>
+                    <!--<div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>-->
+
+                    <!--<div class="details_packet">
+                        <p>Packet-Id : 100</p>
+                        <p>No-of-Components : 4</p>
+                    </div>-->
+                    <div class="table-responsive table-bordered col-md-12 form-group" >
+                        <table class="table" >
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">S-no</th>
+                                <th scope="col">Component name</th>
+                                <th scope="col">type</th>
+                                <th scope="col">Component id</th>
+                                <th scope="col">Quantity </th>
+                                <th scope="col">Issued date </th>
+                                <th scope="col">Return Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>hfmdf</td>
+                                <td>dfds</td>>
+                                <td><input type="checkbox" id="f-option" name="selector"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>trgd</td>
+                                <td>red</td>
+                                <td><input type="checkbox" id="f-option" name="selector"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>trgd</td>
+                                <td>red</td>
+                                <td><input type="checkbox" id="f-option" name="selector"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>trgd</td>
+                                <td>red</td>
+                                <td><input type="checkbox" id="f-option" name="selector"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <center><button type="submit" class="btn btn-primary">Update</button></center>
+                </form>
+            </div>
+
+
+    </div>
+    </section>
+</div>
+{% endblock %}

@@ -13,4 +13,5 @@ urlpatterns = [
     path(r'addcomp/',views.addcomp,name='addcomp'),
     path(r'comptypelist/',views.comptypelist,name='comptypelist'),
     path(r'compdescription/',views.compdescription,name='compdescription'),
+    path(r'packetdetails/',views.packetdetails,name='packetdetails'),
 ]
