@@ -56,3 +56,6 @@ def comptypelist(request):
 
 def compdescription(request):
     return render(request,'eclabmanagement/admin/compdescription.html')
+
+def packetdetails(request):
+    return render(request,'eclabmanagement/admin/packetdetails.html')

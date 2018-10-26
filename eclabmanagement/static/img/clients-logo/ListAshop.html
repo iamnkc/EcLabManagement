@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://127.0.0.1:8080/eclabmanagement/cart/ -->
+<html lang="en" class="gr__127_0_0_1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Required meta tags -->
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="http://127.0.0.1:8080/static/img/favicon.png" type="image/png">
+        <title>ListAshop</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="./ListAshop_files/bootstrap.css">
+        <link rel="stylesheet" href="./ListAshop_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./ListAshop_files/style.css">
+        <link rel="stylesheet" href="./ListAshop_files/font-awesome.min.css">
+        <link rel="stylesheet" href="./ListAshop_files/owl.carousel.min.css">
+        <link rel="stylesheet" href="./ListAshop_files/simpleLightbox.css">
+        <link rel="stylesheet" href="./ListAshop_files/nice-select.css">
+        <link rel="stylesheet" href="./ListAshop_files/animate.css">
+        <link rel="stylesheet" href="./ListAshop_files/jquery-ui.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="./ListAshop_files/style(1).css">
+        <link rel="stylesheet" href="./ListAshop_files/responsive.css">
+    </head>
+    <body data-gr-c-s-loaded="true">
+    <header class="header_area navbar_fixed">
+            <div class="main_menu">
+            	<nav class="navbar navbar-expand-lg navbar-light ">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="http://127.0.0.1:8080/eclabmanagement/cart/index.html"><img src="./ListAshop_files/logo.png" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item active"><a class="nav-link" href="http://127.0.0.1:8080/eclabmanagement/cart/#">Home</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8080/eclabmanagement/cart/profile">Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8080/eclabmanagement/cart/request">Request</a></li>
+                                <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8080/eclabmanagement/cart/cart">Cart</a></li>
+                                <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8080/eclabmanagement/cart/#contact.html">SignOut</a></li>
+                            </ul>
+						</div>
+					</div>
+            	</nav>
+            </div>
+        </header>
+    
+
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Cart</h2>
+						<!--<div class="page_link">
+							<a href="index.html">Home</a>
+							<a href="cart.html">Cart</a>
+						</div> -->
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Cart Area =================-->
+        <section class="cart_area">
+        	<div class="container">
+        		<div class="cart_inner">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Product</th>
+									<th scope="col"></th>
+									<th scope="col">Quantity</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="media">
+											<div class="d-flex">
+												<img src="./ListAshop_files/cart-1.jpg" alt="">
+											</div>
+											<div class="media-body">
+												<p>Minimalistic shop for multipurpose use</p>
+											</div>
+										</div>
+									</td>
+									<td></td>
+									<td>
+										<div class="product_count">
+											<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+										</div>
+									</td>
+									<td>
+										<h5><div class="main_btn">Delete</div></h5>
+									</td>
+								</tr>
+									<tr>
+									<td>
+										<div class="media">
+											<div class="d-flex">
+												<img src="./ListAshop_files/cart-1.jpg" alt="">
+											</div>
+											<div class="media-body">
+												<p>Minimalistic shop for multipurpose use</p>
+											</div>
+										</div>
+									</td>
+									<td></td>
+									<td>
+										<div class="product_count">
+											<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+										</div>
+									</td>
+									<td>
+										<h5><div class="main_btn">Delete</div></h5>
+									</td>
+								</tr>
+	<tr>
+									<td>
+										<div class="media">
+											<div class="d-flex">
+												<img src="./ListAshop_files/cart-1.jpg" alt="">
+											</div>
+											<div class="media-body">
+												<p>Minimalistic shop for multipurpose use</p>
+											</div>
+										</div>
+									</td>
+									<td></td>
+									<td>
+										<div class="product_count">
+											<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+										</div>
+									</td>
+									<td>
+										<h5><div class="main_btn">Delete</div></h5>
+									</td>
+								</tr>
+	<tr>
+									<td>
+										<div class="media">
+											<div class="d-flex">
+												<img src="./ListAshop_files/cart-1.jpg" alt="">
+											</div>
+											<div class="media-body">
+												<p>Minimalistic shop for multipurpose use</p>
+											</div>
+										</div>
+									</td>
+									<td></td>
+									<td>
+										<div class="product_count">
+											<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+											<button onclick="var result = document.getElementById(&#39;sst&#39;); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+										</div>
+									</td>
+									<td>
+										<h5><div class="main_btn">Delete</div></h5>
+									</td>
+								</tr>
+
+
+
+
+								<tr class="">
+									<td><div class="checkout_btn_inner">
+										<a class="main_btn" href="http://127.0.0.1:8080/eclabmanagement/cart/#">Continue Shopping</a>
+										</div></td>
+									<td></td>
+									<td>
+										<div class="checkout_btn_inner">
+											<a class="main_btn" href="http://127.0.0.1:8080/eclabmanagement/cart/#">Proceed to checkout</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+        		</div>
+        	</div>
+        </section>
+     
+
+    <footer class="">
+                <div class="row footer-bottom d-flex justify-content-between align-items-center"></div>
+                    <p class="col-lg-12 footer-text text-center">B-03</p>
+                
+        </footer>
+        <script src="./ListAshop_files/jquery-3.2.1.min.js"></script>
+        <script src="./ListAshop_files/popper.js"></script>
+        <script src="./ListAshop_files/bootstrap.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        -->
+        <script src="./ListAshop_files/bootstrap.min(1).js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="./ListAshop_files/stellar.js"></script>
+        <script src="./ListAshop_files/simpleLightbox.min.js"></script>
+        <script src="./ListAshop_files/jquery.nice-select.min.js"></script>
+        <script src="./ListAshop_files/imagesloaded.pkgd.min.js"></script>
+        <script src="./ListAshop_files/isotope-min.js"></script>
+        <script src="./ListAshop_files/owl.carousel.min.js"></script>
+        <script src="./ListAshop_files/jquery.ajaxchimp.min.js"></script>
+        <script src="./ListAshop_files/mail-script.js"></script>
+        <script src="./ListAshop_files/jquery-ui.js"></script>
+        <script src="./ListAshop_files/jquery.waypoints.min.js"></script>
+        <script src="./ListAshop_files/jquery.counterup.js"></script>
+        <script src="./ListAshop_files/theme.js"></script>
+    
+</body></html>
