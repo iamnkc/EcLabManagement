@@ -5,16 +5,29 @@
         <!--================Header Menu Area =================-->
         
         <!--================Home Banner Area =================-->
-        
+        {% comment %} <section class="contact_area p_120">
+				<div class="banner_inner d-flex align-items-center"> 
+					<div class="container">
+						 <table >
+										<td>
+									<div class="col-md-10">
+									<form class="card card-sm" action="{% url 'searchresult' %}" method="POST">
+										{% csrf_token %}
+										<div class="card-body row no-gutters align-items-center">
+											<div class="col">
+												<input class="form-control form-control-lg form-control-borderless" type="search" name="input" id="input" placeholder="Search components">
+         {% endcomment %}
 		<section class="contact_area p_120">
 				<div class="banner_inner d-flex align-items-center"> 
 					<div class="container">
 						 <table class="table" >
 										<td align="bottom" style="border-top: 200px solid white" >
 									<div class="col-md-10" style="text-align: left">
+										<form class="card card-sm" action="{% url 'searchresult' %}" method="POST">
+										{% csrf_token %}
 										<div class="card-body row no-gutters align-items-center">
 											<div class="col">
-												<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search components " style="text-align: left">
+												<input class="form-control form-control-lg form-control-borderless" type="search" name="input" id="input" placeholder="Search components " style="text-align: left">
 											</div>
 											
 											<div class="col-auto">

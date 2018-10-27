@@ -32,15 +32,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								{% for i in list %}
+								{% for x in li %}
 									<tr>
 
-									<td><p>raspberry</p></td>
+									<td><p>{{x}}</p></td>
 									<td>
 									</td>
 									
 									<td>
-										<h5><div class="main_btn bg-primary">Open</div></h5>
+									
+									<!--a href="{% url 'comptypelist' x %}" class="main_btn" data-toggle="modal" data-target="#addPostModal">Open</a-->
+									<input type="button " class="btn btn-danger bg-primary" onclick="location.href='{% url 'comptypelist' x %}';"  value="open">
+										<!-- <h5><div class="main_btn" >Open</div></h5> -->
 									</td>
 								</tr>
 
