@@ -3,7 +3,7 @@
 {% block content %}
 
 <section class="banner_area">
-        <div class="banner_inner d-flex align-items-center">
+        <div class="banner_inner d-flex align-items-center bg-primary ">
             <div class="container">
                 <div class="banner_content text-center">
                         <h2>Request a New Component</h2>
@@ -37,11 +37,24 @@
                             <input type="number" class="form-control" id="subject" name="subject" placeholder="Quantity" style="text-align: left;">
                         </div>
                         <div class="col-md-6 offset-md-3 form-group">
-                                <center><a class="main_btn" href="#">Request</a></center>
+                                <center><a class="main_btn bg-primary" href="#" data-toggle="modal" data-target="#status">Request</a></center>
                         </div>
                     </form>
                  </div> 
             </div>       
     </section>
-   
+    <div class="modal fade" id="status">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content"> 
+                <p align = "right">
+                    <button class="close" style = "align:right" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </p>
+                <div class="banner_content text-center col-md-6 offset-md-3">
+                    <p>Your request was successfull!!!</p>
+                </div>
+            </div>
+        </div>
+   </div>
 {% endblock %}

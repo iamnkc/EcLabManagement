@@ -1,0 +1,154 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+      <script>
+
+           $(function () {
+               $(document).on('click', '.repeat', function (e) {
+                    e.preventDefault();
+                    var x = $('.parent').children('div:first');
+                    
+                    $('.repeatable').parent('div.parent').append($('.parent').children('div:first').html());
+                    /*var x = $('.parent').children('div:first');
+                    var y = x.children();
+                    $('.repeatable').parent('div.parent').append(str);*/
+                }); 
+            });
+        </script>
+        <script>
+        $(function () {
+               $(document).on('click', '.remove', function (e) {
+                    e.preventDefault();
+                    var x = $('.parent').parent('div:last');
+                    $('.repeatable').parent('div.children').remove($('.parent').parent('div:last').html());
+                    /*var x = $('.parent').children('div:last');
+                    var y = x.parent();
+                    $('.repeatable').parent('div.children').remove(str);*/
+                });
+            });
+        </script> 
+        <script>
+            $(function (){
+                $(document).on('click', '.increase', function (result){
+                    result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;
+                });
+            })
+        </script>
+
+
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center bg-primary">
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Issue Component</h2>
+						<!--<div class="page_link">
+							<a href="index.html">Home</a>
+							<a href="cart.html">Cart</a>
+						</div>-->
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Issue component Area =================-->
+        <section class="contact_area p_120">
+            <div class = "container">
+                <div class = "row">
+                    <div class="col-lg-8 offset-md-2 ">
+                        <form class="row contact_form" id="contactForm" novalidate="novalidate">
+                            <div class="col-md-10 offset-md-1 form-group">
+                                <label for="exampleInputName">Student Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter student name">
+                            </div>
+                            <div class="col-md-10 offset-md-1 form-group">
+                                <label for="exampleInputNumber">Roll Number</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter student roll number">
+                            </div>
+                            <div class="col-md-10 offset-md-1 form-group">
+                                <label for="exampleInputPacket">Packet Id</label>
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="packet id">
+                            </div>
+                            <div class = "parent col-md-10 offset-md-1 form-group " id = "parent">
+                                <div class="repeatable" id = "repeatable">
+                                    <!--<input type = "product_top_bar" name = "bar" id = "sst2" maxlength = "12" value = "1">-->
+                                    <div class="product_top_bar" id="0" >
+                                        <div class="ml-auto product_count" >
+                                            <label for="qty">Component type:</label>
+                                            <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Component type:" class="input-text qty">
+                                            <button class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                            <button class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <select class="sorting">
+                                                <option value="1">Raspberry pi</option>
+                                                <option value="2">Arduino</option>
+                                                <option value="4">Resistor</option>
+                                            </select>
+                                        </div>
+                                        <div class = "ml-auto product_count">
+                                            <label for="qty1">Quantity:</label>
+                                            <input type="text" name="qty1" id="sst1" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                                            <button onclick="var result1 = document.getElementById('sst1'); var sst1 = result1.value; if( !isNaN( sst1 )) result1.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                            <button onclick="var result1 = document.getElementById('sst1'); var sst1 = result1.value; if( !isNaN( sst1 ) &amp;&amp; sst1 > 0 ) result1.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div col-md-10 offset-md-1 form-group>
+                                <button class="repeat w3-circle w3-red">+</button>
+                            </div>
+                            <div col-md-10 offset-md-1 form-group>
+                                <button class="remove w3-circle w3-red">-</button>
+                            </div>
+                            <div class="col-md-6 offset-md-3 form-group">
+                                    <center><a class="main_btn" href="#">Issue</a></center>
+                            </div>
+                        </form>
+                     </div> 
+                </div>
+                
+                
+                    
+        </section>
+        {% endblock %}
+        <!--================End Issue component Area =================-->
+        
+        <!--================Cart Total Area =================-->
+<!--
+        <section class="cart_total_area">
+        	<div class="container">
+        		<div class="cart_total_inner">
+        			<div class="total_head">
+        				
+        			</div>
+        			.
+        		</div>
+        	</div>
+        </section>
+-->
+        <!--================End Cart Total Area =================-->
+        
+        <!--================ start footer Area  =================-->	
+        
+		<!--================ End footer Area  =================-->
+                
+        <script>
+            const rep = document.querySelector('#repeatable')
+            const par = document.querySelector('#parent')
+            document.querySelector('#mak').addEventListener('click', e => {
+                e.preventDefault()
+                console.log('jij')
+                par.innerHTML += rep.innerHTML.toString()
+            })
+        </script>
+    </body>

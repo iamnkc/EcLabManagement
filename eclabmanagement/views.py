@@ -4,7 +4,7 @@ from .models import Student,component_detail,component,due,issue_detail,packet,p
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponse		
-import time
+import datetime
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.template import loader
@@ -57,6 +57,7 @@ def cart(request):
 @login_required(login_url='/')
 def requestcomponent(request):
     return render(request,'eclabmanagement/student/requestcomponent.html')
+
 @login_required(login_url='/')
 def studentprofile(request):
     return render(request,'eclabmanagement/student/student-profile.html')
@@ -75,7 +76,40 @@ def searchresult(request):
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def issuedcompdet(request):
-	return render(request,'eclabmanagement/admin/issuedcompdet.html')
+    issued_obj = issue_detail.objects.all()
+    lis = []
+    count = 0 
+    today = datetime.date.today()
+
+    for each_detail in issued_obj:
+        allowed = each_detail.no_of_days
+        issued = each_detail.issue_date
+        completed = today - issued
+        n_of_days = completed.days
+        return_date = issued + datetime.timedelta(days=int(allowed))
+        if(n_of_days > allowed):
+            due = (n_of_days - allowed)*(each_detail.fine_p_day)
+        else:
+            due = 0
+        lis.append([])
+        number = each_detail.roll_no_id
+        temp = Student.objects.get(roll_no=number)
+        p_id = each_detail.packet_id
+        if(each_detail.returned_date):
+            dat = each_detail.returned_date
+        else:
+            dat = 'not returned'
+        lis[count].append(count+1)
+        lis[count].append(temp.first_name)
+        lis[count].append(p_id)
+        lis[count].append(each_detail.issue_date)
+        lis[count].append(return_date)
+        lis[count].append(dat)
+        lis[count].append(due)
+        
+        count = count + 1
+    context = { 'all_details' : lis }
+    return render(request,'eclabmanagement/admin/issuedcompdet.html',context)
 
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
