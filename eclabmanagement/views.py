@@ -20,6 +20,7 @@ import datetime
 #@login_required(login_url='/')
 def signin(request):                                                  #function for user authentication
     #return render(request,'eclabmanagement/student/login.html')
+    print(request.user.is_authenticated)
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -36,7 +37,7 @@ def signin(request):                                                  #function 
                 return render(request, 'eclabmanagement/student/login.html', {'status': 'Your account has been disabled'})
         else:
             return render(request, 'eclabmanagement/student/login.html', {'status': 'Invalid credentials'})
-    return render(request, 'eclabmanagement/student/login.html')	
+    return render(request, 'eclabmanagement/student/login.html')
 
 #@login_required(login_url='/')
 def logout_view(request):                                           #function for logout
@@ -58,7 +59,7 @@ def requestcomponent(request):
 def studentprofile(request):
     return render(request,'eclabmanagement/student/student-profile.html')
 
-    
+
 @staff_member_required(login_url='/index')  
 @login_required(login_url='/')
 def searchresult(request):                                      #search algorithm
@@ -76,7 +77,7 @@ def issuedcompdet(request):
 """
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
-def issuedcompdet(request):                                 #to show all the users who have taken components 
+def issuedcompdet(request):                                 #to show all the users who have taken components
     issued_obj = issue_detail.objects.all()                 #along with the fine amount if any
     lis = []
     count = 0 
@@ -88,7 +89,7 @@ def issuedcompdet(request):                                 #to show all the use
         completed = today - issued
         n_of_days = completed.days
         if(n_of_days > allowed):
-            due = (n_ofdays - allowed)*(each_detail.fine_p_day)
+            due = (n_of_days - allowed)*(each_detail.fine_p_day)
         else:
             due = 0
         lis.append([])
@@ -106,7 +107,7 @@ def issuedcompdet(request):                                 #to show all the use
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def addcomp(request):                               #function for adding the components
-    if(request.method == 'POST'):					#taking input from the form	  
+    if(request.method == 'POST'):					#taking input from the form
         comp_name = request.POST['comp_name']
         comp_type = request.POST['comp_type']
         quantity = request.POST['quantity']
@@ -138,7 +139,7 @@ def addcomp(request):                               #function for adding the com
                 comp_obj = component()
                 comp_obj.comp_id = comp_det_obj
                 comp_obj.status = 'notissued'
-                comp_obj.save()        
+                comp_obj.save()
         else:
             obj = comp_det_same[0]
             obj.count = obj.count + int(quantity)
@@ -176,7 +177,7 @@ def issuecomponent(request):
     return render(request,'eclabmanagement/admin/issuecomponent.html')
 
 
-
+#This function returns all the details of packet with id given
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def packetdetails(request):
@@ -190,17 +191,21 @@ def packetdetails(request):
         issue = issue[0]
         student_roll_no = issue.roll_no.roll_no
         student_name =issue.roll_no.first_name + issue.roll_no.last_name
+        issue_date =  datetime.datetime.strptime(str(issue.issue_date),"%Y-%m-%d")
+        return_date = issue_date + datetime.timedelta(days= int(issue.no_of_days))
+        print(return_date)
+        return_date = return_date.strftime('%Y-%m-%d')
         component_list = []
         j = 1
         for i in comp:
             if i.uniq_id.status == "issued":
             #print(i.uniq_id.comp_id.comp_name,i.uniq_id.comp_id.type_of_comp,i.count,issue.issue_date,i.uniq_id)
-                component_list.append({"index":j,'name':i.uniq_id.comp_id.comp_name,"type":i.uniq_id.comp_id.comp_name,"count":i.count,"date":str(issue.issue_date),"uniq_id":i.uniq_id.uniq_id})
+                component_list.append({"index":j,'name':i.uniq_id.comp_id.comp_name,"type":i.uniq_id.comp_id.type_of_comp,"count":i.count,"date":str(issue.issue_date),"uniq_id":i.uniq_id.uniq_id})
                 j = j+1
-        print(component_list)
+        #print(component_list)
         if len(component_list) == 0 :
             return redirect('/returncomponent')
-        context = {"name":student_name,"roll_no":student_roll_no,"packet_id":packet_id,"component_list":component_list}
+        context = {"return_date":return_date,"name":student_name,"roll_no":student_roll_no,"packet_id":packet_id,"component_list":component_list}
         print(context)
         return render(request,'eclabmanagement/admin/packetdetails.html',context)
     else:
@@ -227,6 +232,7 @@ def search(request):                                #search function for admin p
         comp_obj = component_detail.objects.filter(type_of_comp__contains = input)
     return render(request,'eclabmanagement/student/searchresult.html',{'comp_obj':comp_obj})
 
+#this functions update issue packet table
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def update_return(request):
