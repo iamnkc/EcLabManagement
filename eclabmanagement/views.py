@@ -180,7 +180,32 @@ def issuecomponent(request):
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def packetdetails(request):
-    return render(request,'eclabmanagement/admin/packetdetails.html')
+    if(request.method == "POST"):
+        packet_id = request.POST['packet_id']
+        #print(packet_id)
+        comp = packet.objects.filter(packet_id=packet_id)
+        issue = issue_detail.objects.filter(packet_id = packet_id)
+        if len(comp) == 0 or len(issue) == 0:
+            return redirect('/returncomponent')
+        issue = issue[0]
+        student_roll_no = issue.roll_no.roll_no
+        student_name =issue.roll_no.first_name + issue.roll_no.last_name
+        component_list = []
+        j = 1
+        for i in comp:
+            if i.uniq_id.status == "issued":
+            #print(i.uniq_id.comp_id.comp_name,i.uniq_id.comp_id.type_of_comp,i.count,issue.issue_date,i.uniq_id)
+                component_list.append({"index":j,'name':i.uniq_id.comp_id.comp_name,"type":i.uniq_id.comp_id.comp_name,"count":i.count,"date":str(issue.issue_date),"uniq_id":i.uniq_id.uniq_id})
+                j = j+1
+        print(component_list)
+        if len(component_list) == 0 :
+            return redirect('/returncomponent')
+        context = {"name":student_name,"roll_no":student_roll_no,"packet_id":packet_id,"component_list":component_list}
+        print(context)
+        return render(request,'eclabmanagement/admin/packetdetails.html',context)
+    else:
+        return render(request,'eclabmanagement/admin/returncomponent.html')
+
 
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
@@ -201,3 +226,22 @@ def search(request):                                #search function for admin p
         input = input.lower()
         comp_obj = component_detail.objects.filter(type_of_comp__contains = input)
     return render(request,'eclabmanagement/student/searchresult.html',{'comp_obj':comp_obj})
+
+@staff_member_required(login_url='/index')
+@login_required(login_url='/')
+def update_return(request):
+    if(request.method == "POST"):
+        print(request.POST['packet_id'])
+        packet_id = int(request.POST['packet_id'])
+        comp = packet.objects.filter(packet_id = packet_id)
+        for i in comp:
+            child = i.uniq_id
+            parent = i.uniq_id.comp_id
+            child.status = "not_issued"
+            parent.count = parent.count + i.count
+            child.save()
+            parent.save()
+        issue = issue_detail.objects.filter(packet_id = packet_id)[0]
+        issue.returned_date = datetime.date.today()
+        issue.save()
+    return redirect('/returncomponent')

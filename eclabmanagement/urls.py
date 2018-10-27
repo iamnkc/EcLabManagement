@@ -21,4 +21,5 @@ urlpatterns = [
     path(r'requestcomponent/',views.requestcomponent,name='requestcomponent'),
     path(r'studentprofile/',views.studentprofile,name='studentprofile'),
     path(r'search/',views.search,name='search'),
+    path(r'update_return/',views.update_return,name='update_return'),
 ]
