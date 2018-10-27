@@ -1,0 +1,46 @@
+{% extends 'eclabmanagement/student/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h3 align="middle" style="vertical-align: middle;">Request a New Component</h3>
+                    <!--<div class="page_link">
+                        <a href="index.html">Home</a>
+                        <a href="cart.html">Cart</a>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+    
+    <!--================request component Area =================-->
+    <section class="contact_area p_120">
+        <div class = "container">
+            <div class = "row">
+                <div class="col-lg-8 offset-md-2 ">
+                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="col-md-10 offset-md-1 form-group">
+                            <label for="exampleInputName">Name of the Component : </label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter component name">
+                        </div>
+                        <div class="col-md-10 offset-md-1 form-group">
+                            <label for="exampleInputPrice">Price : </label>
+                            <input type="integer" class="form-control" id="email" name="email" placeholder="Enter Price">
+                        </div>
+                        <div class="col-md-10 offset-md-1 form-group">
+                            <label for="exampleInputQuantity">Quantity : </label>
+                            <input type="number" class="form-control" id="subject" name="subject" placeholder="Quantity">
+                        </div>
+                        <div class="col-md-6 offset-md-3 form-group">
+                                <center><a class="main_btn" href="#">Request</a></center>
+                        </div>
+                    </form>
+                 </div> 
+            </div>       
+    </section>
+   
+{% endblock %}

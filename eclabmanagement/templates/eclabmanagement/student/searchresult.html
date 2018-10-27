@@ -1,4 +1,4 @@
-{% extends 'eclabmanagement/admin/base.html' %}
+{% extends 'eclabmanagement/student/base.html' %}
 {% load static %}
 {% block content %}
 
@@ -29,7 +29,7 @@
                   <th scope="col">Product</th>
                   <th scope="col">Type Of Component</th>
                   <th scope="col">Quantity</th>
-                  <th scope="col">cost</th>
+                  <th scope="col">Cost</th>
                 </tr>
               </thead>
               <tbody>
@@ -39,16 +39,16 @@
                     <div class="media">
                       
                       <div class="media-body">
-                        <p>{{ each_comp.comp_name}}</p>
+                        <p>{{each_comp.comp_name}}</p>
                       </div>
                     </div>
                   </td>
-                  <td><p>{{ each_comp.type_of_comp }}</p></td>
+                  <td><p>{{each_comp.type_of_comp}}</p></td>
                   <td>
-                    <p>{{ each_comp.count }}</p>
+                    <p>{{each_comp.count}}</p>
                   </td>
                   <td>
-                    <p>{{ each_comp.cost }}</p>
+                    <p>{{each_comp.cost}}</p>
                   </td>
                   <td>
                     <a href="#" class="main_btn" data-toggle="modal" data-target="#addPostModal">
@@ -105,7 +105,18 @@
                     <li><a href="#"><span>Availibility</span> : 5</a></li>
                 </ul></center><br>
                 
+                <form >
+                  <center><div class="product_count form-group">
+                    <label for="qty">Quantity:</label>
+                    <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                </div></center><br><br>
                 
+                <div class="card_area form-group">
+                    <center><a class="main_btn" href="#">Add to Cart</a></center>
+                </div>
+            </form>
             </div>
       </div>
 

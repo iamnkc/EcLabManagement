@@ -9,7 +9,7 @@
         <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
         <title>ListAshop</title>
         <!--search bootstrap-->
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+       <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 			<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 			<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 			
@@ -20,7 +20,7 @@
 			<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 			<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 			<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-			
+			-->
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{% static "css/notification.css" %}">
         <link rel="stylesheet" href="{% static "css/search.css" %}">
@@ -54,10 +54,10 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
-                                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li> 
+                                <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li> 
                                 <li class="nav-item"><a class="nav-link" href="profile">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" href="request">Request</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cart">Cart</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'signin' %}">SignOut</a></li>
                             </ul>
 						</div>
@@ -92,6 +92,6 @@
         <script src="{% static "vendors/counter-up/jquery.waypoints.min.js" %}"></script>
         <script src="{% static "vendors/counter-up/jquery.counterup.js" %}"></script>
         <script src="{% static "js/theme.js" %}"></script>
-        
+        <script src="{% static "js/student-profile.js" %}"></script>
     </body>
 </html>

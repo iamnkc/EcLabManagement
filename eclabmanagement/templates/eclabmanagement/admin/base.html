@@ -9,7 +9,7 @@
         <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
         <title>ListAshop</title>
         <!--search bootstrap-->
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
             
@@ -21,7 +21,7 @@
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
             
-        <!-- Bootstrap CSS -->
+         --><!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{% static "css/notification.css" %}">
         <link rel="stylesheet" href="{% static "css/search.css" %}">
         <link rel="stylesheet" href="{% static "css/studentprof.css" %}">
@@ -55,14 +55,14 @@
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <ul class="nav navbar-nav menu_nav ml-auto">
-                                <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+                                <li class="nav-item active"><a class="nav-link" href="{% url 'adminhome' %}">Home</a></li> 
                                 
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Add Component</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'addcomp' %}"">Add Component</a></li>
                                  
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Components</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Issue</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Return</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">SignOut</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'componenttype' %}">Components</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'issuecomponent' %}">Issue</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'returncomponent' %}">Return</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'signout' %}">SignOut</a></li>
                             </ul>
                         </div>
                     </div>
