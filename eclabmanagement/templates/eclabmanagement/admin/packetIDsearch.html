@@ -1,34 +1,5 @@
 {% extends 'eclabmanagement/admin/base.html' %}
 {% load static %}
-{% block style %}
-
-input[type=text], select {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 20%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-{% endblock %}
 
 {% block content %}
         <!--================Home Banner Area =================-->
@@ -46,12 +17,12 @@ input[type=submit]:hover {
         	<center>
         		<div class="cart_inner">
 					<div class="table-responsive">
-						<table class="table">
+						<table class="table" >
 							<center>
-							<table>
+							<table >
 								<col width ="150">
 								<tr>
-    								<td><label for="fname"><h3>Packet ID :  </h3></label></td>
+    								<td><label for="fname"><h3>Packet ID :</h3></label></td>
     								<td><input type="text" id="fname" name="firstname" value=""><br></td>
 								</tr>
 							</table>

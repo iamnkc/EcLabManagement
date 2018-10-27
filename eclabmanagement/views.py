@@ -18,7 +18,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 import datetime
 
 #@login_required(login_url='/')
-def signin(request):
+def signin(request):                                                  #function for user authentication
     #return render(request,'eclabmanagement/student/login.html')
     if request.method == "POST":
         username = request.POST['username']
@@ -39,12 +39,12 @@ def signin(request):
     return render(request, 'eclabmanagement/student/login.html')	
 
 #@login_required(login_url='/')
-def logout_view(request):
+def logout_view(request):                                           #function for logout
     logout(request)
     return redirect('/')
 
 @login_required(login_url='/')
-def index(request):
+def index(request):                                                 #for student homepage
     return render(request,'eclabmanagement/student/index.html')
 
 @login_required(login_url='/')
@@ -54,15 +54,14 @@ def cart(request):
 @login_required(login_url='/')
 def requestcomponent(request):
     return render(request,'eclabmanagement/student/requestcomponent.html')
-
 @login_required(login_url='/')
 def studentprofile(request):
     return render(request,'eclabmanagement/student/student-profile.html')
 
     
-@staff_member_required(login_url='/index')
+@staff_member_required(login_url='/index')  
 @login_required(login_url='/')
-def searchresult(request):
+def searchresult(request):                                      #search algorithm
     if(request.method == 'POST'):
         input = request.POST['input']
         input = input.lower()
@@ -77,8 +76,8 @@ def issuedcompdet(request):
 """
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
-def issuedcompdet(request):
-    issued_obj = issue_detail.objects.all()
+def issuedcompdet(request):                                 #to show all the users who have taken components 
+    issued_obj = issue_detail.objects.all()                 #along with the fine amount if any
     lis = []
     count = 0 
     today = datetime.date.today()
@@ -106,8 +105,8 @@ def issuedcompdet(request):
 
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
-def addcomp(request):
-    if(request.method == 'POST'):						  
+def addcomp(request):                               #function for adding the components
+    if(request.method == 'POST'):					#taking input from the form	  
         comp_name = request.POST['comp_name']
         comp_type = request.POST['comp_type']
         quantity = request.POST['quantity']
@@ -188,15 +187,15 @@ def packetdetails(request):
 def returncomponent(request):
     return render(request,'eclabmanagement/admin/packetIDsearch.html')
 
-def componenttype(request):
-    comp_obj = component_detail.objects.all()
+def componenttype(request):                         #function to show all the components
+    comp_obj = component_detail.objects.all()       #list wise according to the component types
     li = []
     for obj in comp_obj:
         if(obj.type_of_comp not in li):
             li.append(obj.type_of_comp)
     return render(request,'eclabmanagement/admin/componenttypes.html',{'li':li})
 
-def search(request):
+def search(request):                                #search function for admin page
     if(request.method == 'POST'):
         input = request.POST['input']
         input = input.lower()

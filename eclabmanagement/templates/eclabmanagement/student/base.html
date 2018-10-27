@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
-        <title>ListAshop</title>
+        <title>Ec Lab Management</title>
         <!--search bootstrap-->
        <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 			<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -45,7 +45,7 @@
             	<nav class="navbar navbar-expand-lg navbar-light ">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<!--<a class="navbar-brand logo_h" href="index.html"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 65px; height: 65px; margin-right: 8px;"></a> -->
+						<a class="navbar-brand logo_h" href="index.html"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 65px; height: 65px; margin-right: 8px;"></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -55,8 +55,8 @@
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
                                 <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="profile">Profile</a></li>
-                                <li class="nav-item"><a class="nav-link" href="request">Request</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'studentprofile' %}">Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'requestcomponent' %}">Request</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'signin' %}">SignOut</a></li>
                             </ul>
