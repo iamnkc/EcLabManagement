@@ -31,8 +31,10 @@ def signin(request):
         if user is not None:
             if user.is_active:
                 login(request,user)
-                flag=1
-                return redirect('/index')
+                if(user.is_staff):
+                    return redirect('/adminhome')
+                else:
+                    return redirect('/studenthome')
             else:
                 return render(request, 'eclabmanagement/student/login.html', {'status': 'Your account has been disabled'})
         else:
@@ -42,7 +44,7 @@ def signin(request):
 #@login_required(login_url='/')
 def logout_view(request):
     logout(request)
-    return redirect('/signin.html/')
+    return redirect('/')
 
 @login_required(login_url='/')
 def index(request):
@@ -51,7 +53,15 @@ def index(request):
 @login_required(login_url='/')
 def cart(request):
     return render(request,'eclabmanagement/student/cart.html')
+    
+@login_required(login_url='/')
+def requestcomponent(request):
+    return render(request,'eclabmanagement/student/requestcomponent.html')
+@login_required(login_url='/')
+def studentprofile(request):
+    return render(request,'eclabmanagement/student/student-profile.html')
 
+    
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def searchresult(request):
@@ -134,3 +144,17 @@ def adminhome(request):
 @login_required(login_url='/')
 def packetdetails(request):
     return render(request,'eclabmanagement/admin/packetdetails.html')
+
+@staff_member_required(login_url='/index')
+@login_required(login_url='/')
+def returncomponent(request):
+    return render(request,'eclabmanagement/admin/packetIDsearch.html')
+
+def componenttype(request):
+    num = 3
+    li = []
+    for i in range(num):
+        li.append(i)
+    context = {'list':li}
+    return render(request,'eclabmanagement/admin/componenttypes.html',context)
+

@@ -1,0 +1,38 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+
+{% block content %}
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Packet Search</h2>
+					</div>
+				</div>
+            </div>
+        </section>
+		<section class="cart_area">
+        	<div class="container">
+        	<center>
+        		<div class="cart_inner">
+					<div class="table-responsive">
+						<table class="table" >
+							<center>
+							<table >
+								<col width ="150">
+								<tr>
+    								<td><label for="fname"><h3>Packet ID :</h3></label></td>
+    								<td><input type="text" id="fname" name="firstname" value=""><br></td>
+								</tr>
+							</table>
+							<input type="submit" value="Check">
+						</center>
+						</table>
+					</div>
+        		</div>
+        	</div>
+        	</center>
+        </section>
+
+{% endblock %}
