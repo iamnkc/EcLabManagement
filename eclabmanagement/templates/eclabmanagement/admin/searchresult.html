@@ -21,6 +21,7 @@
         <section class="cart_area">
           <div class="container">
           <center>
+          <h4>Search Results for "{{input}}"</h4>
             <div class="cart_inner">
           <div class="table-responsive">
             <table class="table">
@@ -28,8 +29,10 @@
                 <tr>
                   <th scope="col">Product</th>
                   <th scope="col">Type Of Component</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">cost</th>
+                  <th scope="col">Availability</th>
+                  <th scope="col">Cost</th>
+                  <th scope="col">Premium Component</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -51,9 +54,11 @@
                     <p>{{ each_comp.cost }}</p>
                   </td>
                   <td>
-                      <a href="#" class="main_btn" name = "{{each_comp.comp_name}},{{each_comp.count}}" id='this' data-toggle="modal" data-target="#addPostModal">  
-                    Open
-                        </a>
+                      {% ifequal each_comp.level True %}
+                        <p>Yes</p>
+                      {% else %}
+                        <p>No</p>
+                      {% endifequal %}
                   </td>
                 </tr>
 
