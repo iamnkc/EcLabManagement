@@ -21,6 +21,7 @@
         <section class="cart_area">
           <div class="container">
           <center>
+          <h4>Search Results for "{{input}}"</h4>
             <div class="cart_inner">
           <div class="table-responsive">
             <table class="table">
@@ -28,8 +29,10 @@
                 <tr>
                   <th scope="col">Product</th>
                   <th scope="col">Type Of Component</th>
-                  <th scope="col">Quantity</th>
+                  <th scope="col">Availability</th>
                   <th scope="col">Cost</th>
+                  <th scope="col">Premium Component</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -51,8 +54,15 @@
                     <p>{{each_comp.cost}}</p>
                   </td>
                   <td>
+                      {% ifequal each_comp.level True %}
+                        <p>Yes</p>
+                      {% else %}
+                        <p>No</p>
+                      {% endifequal %}
+                  </td>
+                  <td>
                       <a href="#" class="main_btn" name = "{{each_comp.comp_name}},{{each_comp.count}}" id='this' data-toggle="modal" data-target="#addPostModal">
-                                Open
+                                Add to Cart
                         </a>
                   </td>
                 </tr>
@@ -100,7 +110,7 @@
                 h = h.split(",")
                 document.write(h[0])</script></h3></center>
               <div class="banner_content text-center col-md-6 offset-md-3">
-                <p>Component Description will be displayed here.</p>
+                <p>Select the Quantity</p>
                 </div>
                 <center> 
                 <ul class="list">
@@ -119,7 +129,7 @@
                 </div></center><br><br>
                 
                 <div class="card_area form-group">
-                    <center><a class="main_btn" href="#">Add to Cart</a></center>
+                    <center><a class="main_btn" href="{% url 'index'%}">Add to Cart</a></center>
                 </div>
             </form>
             </div>

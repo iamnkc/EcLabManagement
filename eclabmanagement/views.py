@@ -66,9 +66,11 @@ def studentprofile(request):
 def searchresult(request):                                      #search algorithm
     if(request.method == 'POST'):
         input = request.POST['input']
+        if(input==''):
+            return redirect('/adminhome')
         input = input.lower()
         comp_obj = component_detail.objects.filter(type_of_comp__contains = input)
-    context = {'comp_obj':comp_obj}
+    context = {'comp_obj':comp_obj,'input':input}
     return render(request,'eclabmanagement/admin/searchresult.html',context)
 
 """@staff_member_required(login_url='/index')
@@ -119,7 +121,11 @@ def issuedcompdet(request):                                 #to show all the use
 def addcomp(request):                               #function for adding the components
     if(request.method == 'POST'):					#taking input from the form
         comp_name = request.POST['comp_name']
+        temp = comp_name.split(' ')
+        comp_name = '_'.join(temp)
         comp_type = request.POST['comp_type']
+        temp = comp_type.split(' ')
+        comp_type = '_'.join(temp)
         quantity = request.POST['quantity']
         quantity = int(quantity)
         cost = request.POST['cost']
@@ -162,7 +168,15 @@ def addcomp(request):                               #function for adding the com
                     comp_obj.status = 'notissued'
                     comp_obj.save()
         return redirect('/adminhome')
-    return render(request,'eclabmanagement/admin/addcomponent.html')
+    all = component_detail.objects.all()
+    li = []
+    li1 = []
+    for x in all :
+        if x.type_of_comp not in li:
+            li.append(x.type_of_comp)
+        if x.comp_name not in li1:
+            li1.append(x.comp_name)
+    return render(request,'eclabmanagement/admin/addcomponent.html',{'li':li,'li1':li1})
 
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
@@ -238,9 +252,11 @@ def componenttype(request):                         #function to show all the co
 def search(request):                                #search function for admin page
     if(request.method == 'POST'):
         input = request.POST['input']
+        if(input==''):
+            return redirect('/studenthome')
         input = input.lower()
         comp_obj = component_detail.objects.filter(type_of_comp__contains = input)
-    return render(request,'eclabmanagement/student/searchresult.html',{'comp_obj':comp_obj})
+    return render(request,'eclabmanagement/student/searchresult.html',{'comp_obj':comp_obj,'input':input})
 
 #this functions update issue packet table
 @staff_member_required(login_url='/index')

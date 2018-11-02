@@ -1,0 +1,87 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+{% block js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="{% static "js/mustache.js" %}"></script>
+     <script>$(function() { Mustache.tags = ['[[', ']]'] ; })</script>
+<script>
+$(document).ready(function () {
+    var count = 1;
+    var template = $('#template').html();
+    Mustache.parse(template);
+    var rendered = Mustache.render(template, {num: count});
+    var target = $('#target');
+    target.html(rendered);
+    count = count + 1;
+	$("button#add").on('click',function(e){
+	    target.append(Mustache.render(template, {num: count}));
+	    count = count + 1;
+	});
+	$("button#subtract").on('click',function(e){
+        if(count-1 > 1){
+	    let x = 'div#'+(count-1).toString();
+	    $(x).remove();
+	    count = count - 1;
+        }
+	});
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+    <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Issue Component</h2>
+						<!--<div class="page_link">
+							<a href="index.html">Home</a>
+							<a href="cart.html">Cart</a>
+						</div>-->
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Issue component Area =================-->
+
+<div id="template" style="display:none;">
+      <div class="form-row "  id = "[[ num ]]">
+     <div class="col">
+     <label>Component</label>
+        <select name="component[[ num ]]" id="component[[ num ]]" onchange="changeDrumSample(this, 0)">
+                <option value="raspberry_pi3" selected="selected">Raspberry PI3</option>
+                <option value="raspberry_pi2">Raspberry PI2</option>
+        </select>
+     </div>
+     <div class="col">
+        <input type="text" class="form-control" placeholder="Quantity" name="quantity[[num]]">
+     </div>
+  </div>
+</div>
+
+        <section class="contact_area p_120">
+            <div class = "container">
+                <div class = "row">
+                    <div class="col-lg-8 offset-md-2 ">
+                        <form class="row contact_form" id="contactForm"  action="{% url 'issue_component' %}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-6 offset-md-1 form-group">
+                                <label for="exampleInputNumber">Roll Number</label>
+                                <input type="text" class="form-control" id="email" name="text" placeholder="Enter student roll number">
+                            </div>
+                            <div id = "target">
+                            </div>
+                            <div class="col-md-6 offset-md-3 form-group">
+                                    <button class="main_btn"> Issue</button>
+                            </div>
+                        </form>
+                        <button class="repeat w3-circle w3-red" id="add">+</button>
+                        <button class="remove w3-circle w3-red" id ="subtract">-</button>
+                     </div> 
+                </div>
+        </section>
+
+{% endblock %}
