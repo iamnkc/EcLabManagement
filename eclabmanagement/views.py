@@ -60,9 +60,9 @@ def requestcomponent(request):
 def studentprofile(request):
     return render(request,'eclabmanagement/student/student-profile.html')
 
-
-@staff_member_required(login_url='/index')  
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')  
+#@login_required(login_url='/')
 def searchresult(request):                                      #search algorithm
     if(request.method == 'POST'):
         input = request.POST['input']
@@ -78,8 +78,9 @@ def searchresult(request):                                      #search algorith
 def issuedcompdet(request):
 	return render(request,'eclabmanagement/admin/issuedcompdet.html')
 """
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def issuedcompdet(request):                                 #to show all the users who have taken components
     issued_obj = issue_detail.objects.all()                 #along with the fine amount if any
     lis = []
@@ -116,8 +117,9 @@ def issuedcompdet(request):                                 #to show all the use
     context = { 'all_details' : lis }
     return render(request,'eclabmanagement/admin/issuedcompdet.html',context)
 
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def addcomp(request):                               #function for adding the components
     if(request.method == 'POST'):					#taking input from the form
         comp_name = request.POST['comp_name']
@@ -178,32 +180,36 @@ def addcomp(request):                               #function for adding the com
             li1.append(x.comp_name)
     return render(request,'eclabmanagement/admin/addcomponent.html',{'li':li,'li1':li1})
 
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def comptypelist(request,x):
     comp_obj = component_detail.objects.filter(type_of_comp=x)
     return render(request,'eclabmanagement/admin/comptypelist.html',{'comp_obj':comp_obj})
 
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def compdescription(request):
     return render(request,'eclabmanagement/admin/compdescription.html')
 
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def adminhome(request):
     return render(request,'eclabmanagement/admin/index.html')
 
-
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def issuecomponent(request):
     return render(request,'eclabmanagement/admin/issuecomponent.html')
 
 
 #This function returns all the details of packet with id given
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def packetdetails(request):
     if(request.method == "POST"):
         packet_id = request.POST['packet_id']
@@ -235,9 +241,9 @@ def packetdetails(request):
     else:
         return render(request,'eclabmanagement/admin/returncomponent.html')
 
-
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def returncomponent(request):
     return render(request,'eclabmanagement/admin/packetIDsearch.html')
 
@@ -259,8 +265,9 @@ def search(request):                                #search function for admin p
     return render(request,'eclabmanagement/student/searchresult.html',{'comp_obj':comp_obj,'input':input})
 
 #this functions update issue packet table
-@staff_member_required(login_url='/index')
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+
 def update_return(request):
     if(request.method == "POST"):
         print(request.POST['packet_id'])
