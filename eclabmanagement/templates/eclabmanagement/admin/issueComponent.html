@@ -31,7 +31,7 @@ $(document).ready(function () {
 {% block content %}
 
     <section class="banner_area">
-            <div class="banner_inner d-flex align-items-center">
+            <div class="banner_inner d-flex align-items-center bg-primary">
 				<div class="container">
 					<div class="banner_content text-center">
 						<h2>Issue Component</h2>
@@ -39,21 +39,25 @@ $(document).ready(function () {
 							<a href="index.html">Home</a>
 							<a href="cart.html">Cart</a>
 						</div>-->
+
 					</div>
+
 				</div>
             </div>
+           <center> <a class="main_btn"  href="{% url 'issuedcompdet' %}">Issued Component Details</a></center>
         </section>
         <!--================End Home Banner Area =================-->
-        
+
         <!--================Issue component Area =================-->
 
 <div id="template" style="display:none;">
       <div class="form-row "  id = "[[ num ]]">
      <div class="col">
+
      <label>Component</label>
         {% comment %} <select name="component[[ num ]]" list="types" id="component[[ num ]]" onchange="changeDrumSample(this, 0)"> {% endcomment %}
         <input type="text" list="types" class="form-control" name="component[[ num ]]" placeholder="Enter component type" style="text-align: left" id="component[[ num ]]" onchange="changeDrumSample(this, 0)">
-                                        
+
                                         <datalist id="types">
                                         {% for x in li %}
                                             <option value={{x.comp_name}}>
