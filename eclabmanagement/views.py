@@ -181,10 +181,7 @@ def adminhome(request):
     return render(request,'eclabmanagement/admin/index.html')
 
 
-@staff_member_required(login_url='/index')
-@login_required(login_url='/')
-def issuecomponent(request):
-    return render(request,'eclabmanagement/admin/issuecomponent.html')
+
 
 
 #This function returns all the details of packet with id given
@@ -258,6 +255,52 @@ def update_return(request):
             child.save()
             parent.save()
         issue = issue_detail.objects.filter(packet_id = packet_id)[0]
-        issue.returned_date = datetime.date.today()
+        issue.returned_date = datetime.date.today().strftime('%Y-%m-%d')
         issue.save()
     return redirect('/returncomponent')
+
+
+
+@staff_member_required(login_url='/index')
+@login_required(login_url='/')
+def issuecomponent(request):
+    al = component_detail.objects.all()
+    num = Student.objects.all()
+    if(request.method == "POST"):
+        roll_no = request.POST["roll_no"]
+        no_of_days = 20
+        user = Student.objects.filter(roll_no = roll_no)
+        if len(user) :
+            issue = issue_detail()
+            issue.roll_no = user[0]
+            date = datetime.date.today().strftime('%Y-%m-%d')
+            issue.issue_date = date
+            issue.no_of_days = no_of_days
+            issue.fine_p_day = 2
+            issue.save()
+            x = len(request.POST) - 2
+            x = int(x /2)
+            for i in range(1,x+1):
+                type = "component"+str(i)
+                quantity = "quantity" + str(i)
+                print(request.POST[type],request.POST[quantity])
+                component_det = component_detail.objects.filter(comp_name = request.POST[type])[0]
+                print(component_det,issue.packet_id)
+                component_det.count = component_det.count - int(request.POST[quantity])
+                component_det.save()
+                component_avail = component.objects.filter(comp_id = component_det.comp_id,status = "not_issued" )
+                component_avail = component_avail[:int(request.POST[quantity])]
+                print(component_avail)
+                for comp in component_avail:
+                    pack = packet()
+                    pack.packet_id = issue
+                    pack.uniq_id = comp
+                    if component_det.level == True:
+                        pack.count = 1
+                    else:
+                        pack.count = int(request.POST[quantity])
+                    comp.status = "issued"
+                    comp.save()
+                    pack.save()
+            issue.save()
+    return render(request,'eclabmanagement/admin/issueComponent.html',{'li':al,'nos':num})

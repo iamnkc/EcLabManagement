@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'elm',
         'USER': 'ec_lab_user',
         'PASSWORD': 'group3@ASE',
-        'HOST': '18.217.23.187',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
