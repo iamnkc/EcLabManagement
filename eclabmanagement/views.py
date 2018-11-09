@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student,component_detail,component,due,issue_detail,packet,pre_order,review,request,cart
+from .models import Student,component_detail,component,due,issue_detail,packet,pre_order,review,requestcomp,cart
 
 # Create your views here.
 from django.shortcuts import render
@@ -54,6 +54,19 @@ def cart(request):
     
 @login_required(login_url='/')
 def requestcomponent(request):
+    if(request.method == 'POST'):
+        comp_name = request.POST['comp_name']
+        price = request.POST['price']
+        quantity = request.POST['quantity']
+        req = requestcomp()
+        req.name_of_comp = comp_name
+        req.price = price
+        req.quantity = quantity
+        req.approval_status = 'not_approved'
+        print(request.user)
+        req.roll_no = Student.objects.get(roll_no = request.user)
+        req.on_date = datetime.date.today().strftime('%Y-%m-%d')
+        req.save()
     return render(request,'eclabmanagement/student/requestcomponent.html')
 
 @login_required(login_url='/')
@@ -197,8 +210,12 @@ def compdescription(request):
 @staff_member_required(login_url='/index')
 #@login_required(login_url='/')
 def adminhome(request):
-    return render(request,'eclabmanagement/admin/index.html')
-
+    obj = requestcomp.objects.all()[len(requestcomp.objects.all())-3 : len(requestcomp.objects.all())]
+    try:
+        obj1 = component_detail.objects.get(count = 0)
+    except:
+        obj1 = {}
+    return render(request,'eclabmanagement/admin/index.html',{'obj':obj,'obj1':obj1})
 
 
 #This function returns all the details of packet with id given
@@ -325,3 +342,9 @@ def issuecomponent(request):
                     pack.save()
             issue.save()
     return render(request,'eclabmanagement/admin/issueComponent.html',{'li':al,'nos':num})
+
+@login_required(login_url='/')
+@staff_member_required(login_url='/index')
+def notification(request):
+    obj = requestcomp.objects.all()
+    return render(request,'eclabmanagement/admin/notif.html',{'obj':obj})

@@ -23,22 +23,23 @@
         <div class = "container">
             <div class = "row">
                 <div class="col-lg-8 offset-md-2 ">
-                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    <form class="row contact_form" name="requestcomponent" method="POST" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}
                         <div class="col-md-10 offset-md-1 form-group">
                             <label for="exampleInputName"><h3>Name of the Component :</h3> </label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter component name" style="text-align: left;">
+                            <input type="text" class="form-control" name="comp_name" placeholder="Enter component name" style="text-align: left;">
                         </div>
                         <div class="col-md-10 offset-md-1 form-group">
                             <label for="exampleInputPrice"><h3>Price :</h3> </label>
-                            <input type="integer" class="form-control" id="email" name="email" placeholder="Enter Price" style="text-align: left;">
+                            <input type="number" class="form-control" name="price" placeholder="Enter Price" style="text-align: left;">
                         </div>
                         <div class="col-md-10 offset-md-1 form-group">
                             <label for="exampleInputQuantity"><h3>Quantity :</h3> </label>
-                            <input type="number" class="form-control" id="subject" name="subject" placeholder="Quantity" style="text-align: left;">
+                            <input type="number" class="form-control" name="quantity" placeholder="Quantity" style="text-align: left;">
                         </div>
-                        <div class="col-md-6 offset-md-3 form-group">
-                                <center><a class="main_btn bg-primary" href="#" data-toggle="modal" data-target="#status">Request</a></center>
-                        </div>
+                        <div class="col-sm-offset-5 col-sm-12">
+                                <button type="submit" class="btn btn-primary">Request</button>
+                            </div> 
                     </form>
                  </div> 
             </div>       
