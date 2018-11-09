@@ -22,5 +22,6 @@ urlpatterns = [
     path(r'studentprofile/',views.studentprofile,name='studentprofile'),
     path(r'search/',views.search,name='search'),
     path(r'update_return/',views.update_return,name='update_return'),
+    path(r'notification/',views.notification,name='notification'),
     #path(r'issue_component/',views.issue_component,name='issue_component')
 ]
