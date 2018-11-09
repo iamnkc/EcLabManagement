@@ -149,14 +149,14 @@ def addcomp(request):                               #function for adding the com
                 for i in range(0,int(quantity)):
                     comp_obj = component()
                     comp_obj.comp_id = comp_det_obj
-                    comp_obj.status = 'notissued'
+                    comp_obj.status = 'not_issued'
                     comp_obj.save()
             else:
                 comp_det_obj.level = False
                 comp_det_obj.save()
                 comp_obj = component()
                 comp_obj.comp_id = comp_det_obj
-                comp_obj.status = 'notissued'
+                comp_obj.status = 'not_issued'
                 comp_obj.save()
         else:
             obj = comp_det_same[0]
@@ -167,7 +167,7 @@ def addcomp(request):                               #function for adding the com
                 for i in range(0,int(quantity)):
                     comp_obj = component()
                     comp_obj.comp_id = obj
-                    comp_obj.status = 'notissued'
+                    comp_obj.status = 'not_issued'
                     comp_obj.save()
         return redirect('/adminhome')
     all = component_detail.objects.all()
@@ -208,6 +208,8 @@ def adminhome(request):
 def packetdetails(request):
     if(request.method == "POST"):
         packet_id = request.POST['packet_id']
+        if(packet_id == ''):
+            return redirect("/returncomponent")
         #print(packet_id)
         comp = packet.objects.filter(packet_id=packet_id)
         issue = issue_detail.objects.filter(packet_id = packet_id)
@@ -265,19 +267,29 @@ def search(request):                                #search function for admin p
 
 def update_return(request):
     if(request.method == "POST"):
-        print(request.POST['packet_id'])
-        packet_id = int(request.POST['packet_id'])
-        comp = packet.objects.filter(packet_id = packet_id)
-        for i in comp:
-            child = i.uniq_id
-            parent = i.uniq_id.comp_id
-            child.status = "not_issued"
-            parent.count = parent.count + i.count
-            child.save()
-            parent.save()
-        issue = issue_detail.objects.filter(packet_id = packet_id)[0]
-        issue.returned_date = datetime.date.today().strftime('%Y-%m-%d')
-        issue.save()
+        packet_id = int(request.POST["packet_id"])
+        try:
+            packet_id = request.POST["all_submit"]
+            print(request.POST['packet_id'])
+            packet_id = int(request.POST['packet_id'])
+            comp = packet.objects.filter(packet_id = packet_id)
+            for i in comp:
+                child = i.uniq_id
+                parent = i.uniq_id.comp_id
+                child.status = "not_issued"
+                parent.count = parent.count + i.count
+                child.save()
+                parent.save()
+            issue = issue_detail.objects.filter(packet_id = packet_id)[0]
+            issue.returned_date = datetime.date.today().strftime('%Y-%m-%d')
+            issue.save()
+        except:
+            avoid = ["csrfmiddlewaretoken","packet_id"]
+            for i in request.POST:
+                if i not in avoid:
+                    comp = component.objects.filter(uniq_id = i)[0]
+                    comp.status = "not_issued"
+                    comp.save()
     return redirect('/returncomponent')
 
 
@@ -291,6 +303,12 @@ def issuecomponent(request):
         roll_no = request.POST["roll_no"]
         no_of_days = 20
         user = Student.objects.filter(roll_no = roll_no)
+        x = len(request.POST) - 2
+        x = int(x /2)
+        for i in range(1,x+1):
+            type = "component"+str(i)
+            quantity = "quantity" + str(i)
+            print(request.POST[type],request.POST[quantity])
         if len(user) :
             issue = issue_detail()
             issue.roll_no = user[0]
@@ -310,6 +328,7 @@ def issuecomponent(request):
                 component_det.count = component_det.count - int(request.POST[quantity])
                 component_det.save()
                 component_avail = component.objects.filter(comp_id = component_det.comp_id,status = "not_issued" )
+                print
                 component_avail = component_avail[:int(request.POST[quantity])]
                 print(component_avail)
                 for comp in component_avail:

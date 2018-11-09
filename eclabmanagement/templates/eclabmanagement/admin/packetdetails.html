@@ -1,12 +1,5 @@
 {% extends 'eclabmanagement/admin/base.html' %}
 {% load static %}
-{% block style %}
-    .details_packet{
-        font-size : 30px;
-        font-weight: 700;
-
-    }
-{% endblock %}
 {% block content %}
     <section class="banner_area ">
         <div class="banner_inner d-flex align-items-center bg-primary">
@@ -20,13 +13,14 @@
 
     <section class="cart_area">
         <div class="container">
-                <form class = "col-md-10 offset-md-1" action = "{% url 'update_return' %}" method = "post">
+                <form class = "col-md-10 offset-md-1" action = "{% url 'update_return' %}" method = "POST">
                 {% csrf_token %}
                    <div class="form-group">
                         <label for="exampleInputPacket">Packet id:</label>
-                        <input type="text" class="form-control" id="exampleInputPacket" aria-describedby="emailHelp" placeholder={{packet_id}} disabled>
+                        <input type="text" class="form-control" id="exampleInputPacket" aria-describedby="emailHelp"   name="packet_id" value="{{packet_id}}" disabled>
                         <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>
+                    <input type="hidden" name="packet_id" value="{{packet_id}}">
                     <div class="form-group">
                         <label for="exampleInputStudent">Student name:</label>
                         <input type="text" class="form-control disabled" id="exampleInputStudent" placeholder={{name}} disabled>
@@ -38,17 +32,6 @@
                     <div class="form-group">
                             <label for="exampleInputRoll">Return date:</label>
                             <input type="text" class="form-control" id="exampleInputRoll" placeholder={{return_date}} disabled>
-                    </div>
-                    <!--<div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>-->
-
-                    <!--<div class="details_packet">
-                        <p>Packet-Id : 100</p>
-                        <p>No-of-Components : 4</p>
-                    </div>-->
                     <div class="table-responsive table-bordered col-md-12 form-group" >
                         <table class="table" >
                             <thead class="thead-dark">
@@ -58,6 +41,7 @@
                                 <th scope="col">type</th>
                                 <th scope="col">Quantity </th>
                                 <th scope="col">Issued date </th>
+                                <th scope = "col"> Return Component </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -68,14 +52,14 @@
                                 <td>{{i.type}}</td>
                                 <td>{{i.count}}</td>
                                 <td>{{i.date}}</td>
-
+                                <td><input type="checkbox"  name = "{{i.uniq_id}}" id="{{i.name}}"  value="{{i.uniq_id}}" onclick="toggle1(this)"></td>
                             </tr>
                             {% endfor %}
                             </tbody>
 
                         </table>
                     </div>
-                    <center><input type="checkbox" id="f-option" name="packet_id" value ={{packet_id}}> Return all Components <br>
+                    <center><input type="checkbox" id="f-option" id = "select-all" name="all_submit" value ={{packet_id}} onclick="toggle(this)"> Return all Components <br>
                     <button type="submit" class="btn btn-primary"> submit </button></center>
                 </form>
             </div>
@@ -84,4 +68,5 @@
     </div>
     </section>
 </div>
+
 {% endblock %}

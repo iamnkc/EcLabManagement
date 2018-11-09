@@ -120,5 +120,32 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <script src="http:/code.jquery.com/jquery-1.9.1.js"></script>
+        <script>
+            function toggle1(source){
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                //console.log(checkboxes.length);
+                len = checkboxes.length;
+                var count = 0;
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+                for (var i = 0; i < checkboxes.length-1; i++) {
+                    if (checkboxes[i].checked == true)
+                        count = count + 1 ;
+                }
+                //console.log(count)
+                if(count==len-1){
+                    checkboxes[len-1].checked = true;
+                }else{
+                    checkboxes[len-1].checked = false;
+                }
+            }
+            function toggle(source) {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i] != source)
+                        checkboxes[i].checked = source.checked;
+                }
+            }
+        </script>
     </body>
 </html>
