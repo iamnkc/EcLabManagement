@@ -20,6 +20,9 @@
 					<form action="{% url 'packetdetails'%}" method="post">
 						{% csrf_token %}
 						<table class="table">
+							{% if error %}
+								<span class="error" style="color:red">{{error}}</span>
+							{% endif %}
 							<center>
 							<table>
 								<col width ="150">

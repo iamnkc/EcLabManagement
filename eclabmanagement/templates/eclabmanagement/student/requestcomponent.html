@@ -17,13 +17,13 @@
         </div>
     </section>
     <!--================End Home Banner Area =================-->
-    
+
     <!--================request component Area =================-->
     <section class="contact_area p_120">
         <div class = "container">
             <div class = "row">
                 <div class="col-lg-8 offset-md-2 ">
-                    <form class="row contact_form" name="requestcomponent" method="POST" id="contactForm" novalidate="novalidate">
+                    <form class="row contact_form" name="requestcomponent" onsubmit="greeting()" method="POST" id="contactForm" novalidate="novalidate">
                         {% csrf_token %}
                         <div class="col-md-10 offset-md-1 form-group">
                             <label for="exampleInputName"><h3>Name of the Component :</h3> </label>
@@ -38,11 +38,15 @@
                             <input type="number" class="form-control" name="quantity" placeholder="Quantity" style="text-align: left;">
                         </div>
                         <div class="col-sm-offset-5 col-sm-12">
-                                <button type="submit" class="btn btn-primary">Request</button>
-                            </div> 
+                                <center><button type="submit" class="btn btn-primary">Request</button></center>
+                            </div>
+                        {% if error %}
+								<center><span class="error" style="color:red">{{error}}</span></center>
+						{% endif %}
+                        </script>
                     </form>
                  </div> 
-            </div>       
+            </div>
     </section>
     <div class="modal fade" id="status">
         <div class="modal-dialog modal-lg">

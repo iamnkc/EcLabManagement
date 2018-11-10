@@ -56,6 +56,10 @@ def cart(request):
 def requestcomponent(request):
     if(request.method == 'POST'):
         comp_name = request.POST['comp_name']
+        if(comp_name == ''):
+            return render(request,'eclabmanagement/student/requestcomponent.html',{'error':'No empty fields Please !!'})
+        li = comp_name.split(' ')
+        comp_name = '_'.join(li)
         price = request.POST['price']
         quantity = request.POST['quantity']
         req = requestcomp()
@@ -67,6 +71,7 @@ def requestcomponent(request):
         req.roll_no = Student.objects.get(roll_no = request.user)
         req.on_date = datetime.date.today().strftime('%Y-%m-%d')
         req.save()
+        return redirect('/studenthome')
     return render(request,'eclabmanagement/student/requestcomponent.html')
 
 @login_required(login_url='/')
@@ -74,7 +79,7 @@ def studentprofile(request):
     return render(request,'eclabmanagement/student/student-profile.html')
 
 @login_required(login_url='/')
-@staff_member_required(login_url='/index')  
+@staff_member_required(login_url='/index')
 #@login_required(login_url='/')
 def searchresult(request):                                      #search algorithm
     if(request.method == 'POST'):
@@ -97,7 +102,7 @@ def issuedcompdet(request):
 def issuedcompdet(request):                                 #to show all the users who have taken components
     issued_obj = issue_detail.objects.all()                 #along with the fine amount if any
     lis = []
-    count = 0 
+    count = 0
     today = datetime.date.today()
 
     for each_detail in issued_obj:
@@ -210,7 +215,10 @@ def compdescription(request):
 @staff_member_required(login_url='/index')
 #@login_required(login_url='/')
 def adminhome(request):
-    obj = requestcomp.objects.all()[len(requestcomp.objects.all())-3 : len(requestcomp.objects.all())]
+    try:
+        obj = requestcomp.objects.all()[len(requestcomp.objects.all())-3 : len(requestcomp.objects.all())]
+    except:
+        obj = {}
     try:
         obj1 = component_detail.objects.get(count = 0)
     except:
@@ -226,12 +234,11 @@ def packetdetails(request):
     if(request.method == "POST"):
         packet_id = request.POST['packet_id']
         if(packet_id == ''):
-            return redirect("/returncomponent")
-        #print(packet_id)
+            return render(request,'eclabmanagement/admin/packetIDsearch.html',{"error":"Give Packet ID"})
         comp = packet.objects.filter(packet_id=packet_id)
         issue = issue_detail.objects.filter(packet_id = packet_id)
         if len(comp) == 0 or len(issue) == 0:
-            return redirect('/returncomponent')
+            return render(request,'eclabmanagement/admin/packetIDsearch.html',{"error":"Give correct Packet ID"})
         issue = issue[0]
         student_roll_no = issue.roll_no.roll_no
         student_name =issue.roll_no.first_name + issue.roll_no.last_name
@@ -248,12 +255,14 @@ def packetdetails(request):
                 j = j+1
         #print(component_list)
         if len(component_list) == 0 :
-            return redirect('/returncomponent')
+            return render(request,'eclabmanagement/admin/packetIDsearch.html',{"error":"packet is already returned"})
         context = {"return_date":return_date,"name":student_name,"roll_no":student_roll_no,"packet_id":packet_id,"component_list":component_list}
         print(context)
         return render(request,'eclabmanagement/admin/packetdetails.html',context)
     else:
-        return render(request,'eclabmanagement/admin/returncomponent.html')
+        return render(request,'eclabmanagement/admin/packetIDsearch.html')
+
+
 
 @login_required(login_url='/')
 @staff_member_required(login_url='/index')
