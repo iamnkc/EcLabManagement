@@ -1,0 +1,66 @@
+{% extends 'eclabmanagement/student/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="banner_area">
+        <div class="banner_inner d-flex align-items-center bg-primary ">
+            <div class="container">
+                <div class="banner_content text-center">
+                        <h2>Request a New Component</h2>
+                    <!-- <h3 align="middle" style="vertical-align: middle;">Request a New Component</h3>
+                    -->                 <!--<div class="page_link"> -->
+                        <!-- <a href="index.html">Home</a>
+                        <a href="cart.html">Cart</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+    <!--================request component Area =================-->
+    <section class="contact_area p_120">
+        <div class = "container">
+            <div class = "row">
+                <div class="col-lg-8 offset-md-2 ">
+                    <form class="row contact_form" name="requestcomponent" onsubmit="greeting()" method="POST" id="contactForm" novalidate="novalidate">
+                        
+                        {% csrf_token %}
+                        <div class="col-md-10 offset-md-1 form-group">
+                            <label for="exampleInputName"><h3>Name of the Component :</h3> </label>
+                            <input type="text" class="form-control" name="comp_name" placeholder="Enter component name" style="text-align: left;">
+                        </div>
+                        <div class="col-md-10 offset-md-1 form-group">
+                            <label for="exampleInputPrice"><h3>Price :</h3> </label>
+                            <input type="number" class="form-control" name="price" placeholder="Enter Price" style="text-align: left;">
+                        </div>
+                        <div class="col-md-10 offset-md-1 form-group">
+                            <label for="exampleInputQuantity"><h3>Quantity :</h3> </label>
+                            <input type="number" class="form-control" name="quantity" placeholder="Quantity" style="text-align: left;">
+                        </div>
+                        <div class="col-sm-offset-5 col-sm-12">
+                                <center><button type="submit" class="btn btn-primary">Request</button></center>
+                            </div>
+                        {% if error %}
+								<center><span class="error" style="color:red">{{error}}</span></center>
+						{% endif %}
+                        </script>
+                    </form>
+                 </div> 
+            </div>
+    </section>
+    <div class="modal fade" id="status">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content"> 
+                <p align = "right">
+                    <button class="close" style = "align:right" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </p>
+                <div class="banner_content text-center col-md-6 offset-md-3">
+                    <p>Your request was successfull!!!</p>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}

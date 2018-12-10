@@ -1,0 +1,50 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="banner_area ">
+        <div class="banner_inner d-flex align-items-center bg-primary">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Notifications</h2>
+                    <!--<div class="page_link">
+                        <a href="index.html">Home</a>
+                        <a href="cart.html">Cart</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart_area">
+            <div class="container" style="padding-top:0px;">
+                    <div class="table-responsive table-bordered ">
+                    <table class="table ">
+                            <thead class="thead-dark">
+                              
+                              <tr>
+                                {% comment %} <th scope="col"></th> {% endcomment %}
+                                <th scope="col">Id</th>
+                                <th scope="col">requested_component</th>
+                                <th scope="col">cost</th>
+                                <th scope="col">quantity</th>
+                                <th scope="col">requested_date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for each_obj in obj %}
+                              <tr>
+                                <td>{{each_obj.roll_no.roll_no}}</td>
+                                <td>{{each_obj.name_of_comp}}</td>
+                                <td>{{each_obj.price}}</td>
+                                <td>{{each_obj.quantity}}</td>
+                                <td>{{each_obj.on_date}}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+            </div>
+    </section>
+        
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+
+{% block content %}
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center bg-primary">
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Packet Search</h2>
+					</div>
+				</div>
+            </div>
+        </section>
+		<section class="cart_area">
+        	<div class="container">
+        	<center>
+        		<div class="cart_inner">
+					<div class="table-responsive">
+					<form action="{% url 'packetdetails'%}" method="post">
+						{% csrf_token %}
+						<table class="table">
+							{% if error %}
+								<span class="error" style="color:red">{{error}}</span>
+							{% endif %}
+							<center>
+							<table>
+								<col width ="150">
+								<tr>
+    								<td><label for="fname"><h3>Packet ID :  </h3></label></td>
+    								<td><input type="text" id="packet_id" name="packet_id" value=""><br></td>
+								</tr>
+							</table>
+							<input type="submit" class= "bg-primary" value="Check">
+						</center>
+						</table>
+						</form>
+					</div>
+        		</div>
+        	</div>
+        	</center>
+        </section>
+
+{% endblock %}

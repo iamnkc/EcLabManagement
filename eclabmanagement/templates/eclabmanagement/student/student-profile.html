@@ -1,0 +1,287 @@
+{% extends 'eclabmanagement/student/base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center bg-primary">
+                <div class="container">
+					<div class="banner_content text-center">
+						<h2>Student Profile</h2>
+						<!--<div class="page_link">
+							<a href="index.html">Home</a>
+							<a href="cart.html">Cart</a>
+						</div> -->
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+        <!--================Cart Area =================-->
+        <section class="cart_area">
+            <table >
+                <td align="middle" style="vertical-align: top;" >
+                    
+                        <form method="post">
+                                <div class="row">
+                                 <div class="col-md-8">
+                                     <div class="profile-img">
+                       <img class="irc_mut" alt="Related image" onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIrUVR8bfYhhfAPd8A8WF1VyzARtmFfyat-DxJGIztvSm67od3" width="300" height="225" style="margin-top: 64px;">                                 </div>
+                                                    <div class="profile-head">
+                                                        <br>
+                                                    <h5>
+                                                            {% for each_student in student_obj %}
+                                                        {{ each_student.first_name }}
+
+                                                        
+                                                    </h5>
+                                                    <h6 class="proile-rating">
+                                                           Registered Degree :<span>{{ each_student.regis_deg }}</span>
+                                                    </h6>
+                                                    
+                                                    <h6 class="proile-rating">Registered year : <span>{{ each_student.regis_year }}</span></h6>
+                                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                        <li class="nav-item">
+                                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                                        </li>
+                                                        
+                                        <!-- <li class="nav-item">
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                        </li> -->
+                                    </ul>
+                                    
+                                </div>
+                                    </div>
+                                    
+                                </div>
+                                    <div class="col-md-8">
+                                        <div class="tab-content profile-tab" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>User Id</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>{{ each_student.roll_no }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Name</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>{{ each_student.first_name }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Email</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>{{ each_student.email }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label>Registered year</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{ each_student.regis_year }}</p>
+                                                                </div>
+                                                            </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Phone Number</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>{{ each_student.phone }}</p>
+                                                            </div>
+                                                        </div>
+
+                                                    
+                                                        {% endfor %}
+
+                                            </div>
+                                            <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Experience</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>Expert</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Hourly Rate</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>10$/hr</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Total Projects</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>230</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>English Level</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>Expert</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Availability</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>6 months</p>
+                                                            </div>
+                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Your Bio</label><br/>
+                                                        <p>Your detail description</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <br>
+                                       <!--addPostModal-->
+                                        <a href="#" class="main_btn bg-primary" data-toggle="modal" data-target=# >  
+                                                Edit Profile
+                                             </a>                             
+                                       <!--- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" align="middle" style="text-align: center;"/>
+                                       -->
+                                    </div>
+                                    
+                                </div>
+
+        </form>           
+    
+
+                </td>
+                <td align="middle" style="vertical-align: middle;">
+                        <h2 align="middle" style="vertical-align: middle;">Issued Details</h2>
+                    <div class="row">                                    
+                                <div class="col-md-13">
+                                    
+                                    <div class="table-responsive">
+                    
+                                    
+                                        <table id="mytable" class="table table-bordred table-striped">
+                                       
+                                            <thead>
+                                       
+                                            <th><input type="checkbox" id="checkall" /></th>
+                                            <th>ComponentName</th>
+                                            <th>Quantity</th>
+                                            <th>IssueDate</th>
+                                            <th>DueDate</th>
+                                            <th>penalty</th>
+                                            </thead>
+                                            <tbody>
+                        
+                                        
+                                        <tr>
+                                            <td><input type="checkbox" class="checkthis" /></td>
+                                            <td>Raspberry pie</td>
+                                            <td>2</td>
+                                            <td>12 oct 2018</td>
+                                            <td>25 oct 2018</td>
+                                            <td>15.00</td>
+                                            
+                                        </tr>
+                                      
+                                       
+                                        </tbody>
+                                        
+                                        
+                                          </table>
+                                          <button class="bg-primary">Pay</button>   
+                                     </div>
+
+                                    </div>
+                                    
+                                        
+                            </div>
+                            
+
+                </td>
+           
+        </table>  
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+      </div>
+          <div class="modal-body">
+          <div class="form-group">
+        <input class="form-control " type="text" placeholder="Mohsin">
+        </div>
+        <div class="form-group">
+        
+        <input class="form-control " type="text" placeholder="Irshad">
+        </div>
+        <div class="form-group">
+        <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+    
+        
+        </div>
+      </div>
+          <div class="modal-footer ">
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+
+     </section>
+     
+     <div class="modal fade" id="addPostModal">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="bg-secondary text-white">
+                  <center><h3 class="modal-title">Component Description</h3></center>
+                  <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                  </button>
+                </div>
+                <div class="s_product_text">
+                    
+                        <center><h3 class = "modal-title">Raspberry pi</h3></center>
+                        <div class="banner_content text-center col-md-6 offset-md-3">
+                        <p>Raspberry pi is a microcontroller with the most modern technology. If you are looking for something that can make your interior look awesome, and at the same time give you the pleasant warm feeling during the winter.</p>
+                        </div>
+                        <center> 
+                        <ul class="list">
+                            <li><a href="#"><span>Availibility</span> : 5</a></li>
+                        </ul></center><br>
+                        
+                        <form >
+                            <center><div class="product_count form-group">
+                            <label for="qty">Quantity:</label>
+                            <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                        </div></center><br><br>
+                        
+                        <div class="card_area form-group">
+                            <center><a class="main_btn" href="#">Update</a></center>
+                        </div>
+                    </form>
+                    </div>
+              </div>
+        
+            <!--</div>-->
+          </div>
+          {% endblock %}

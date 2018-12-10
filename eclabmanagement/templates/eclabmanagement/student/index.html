@@ -5,483 +5,78 @@
         <!--================Header Menu Area =================-->
         
         <!--================Home Banner Area =================-->
-        <section class="home_banner_area">
-            <div class="banner_inner d-flex align-items-center">
-				<div class="container">
-					<div class="banner_content row">
-						<div class="col-lg-5">
-							<h3>Georgia Helmet <br />Collections!</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-							<a class="white_bg_btn" href="#">View Collection</a>
-						</div>
-						<div class="col-lg-7">
-							<div class="halemet_img">
-								<img src="img/banner/helmat.png" alt="">
-							</div>
-						</div>
-					</div>
+        
+		<section class="contact_area p_120">
+				<div class="banner_inner d-flex align-items-center"> 
+					<div class="container">
+						 {% comment %} <table >
+										<td >
+									<div class="col-md-10">
+									<form class="card card-sm" action="{% url 'search' %}" method='POST'>
+									{% csrf_token %}
+										<div class="card-body row no-gutters align-items-center">
+											<div class="col">
+												<input class="form-control form-control-lg form-control-borderless" type="search" name="input" id="input" placeholder="Search components"> {% endcomment %}
+						 <table class="table" >
+										<td align="bottom" style="border-top: 200px solid white" >
+									<div class="col-md-10" style="text-align: left">
+										<form class="card card-sm" action="{% url 'search' %}" method='POST'>
+									{% csrf_token %}
+									
+										<div class="card-body row no-gutters align-items-center">
+											<div class="col">
+												<input class="form-control form-control-lg form-control-borderless" type="search" name="input" id="input" placeholder="Search components " style="text-align: left">
+											</div>
+											
+											<div class="col-auto">
+												<button class="btn btn-lg btn-success" type="submit">Search</button>
+											</div>
+											
+										</div>
+									</form>
+								</div>
+								
+							</td>
+							
+							 <!-- <td align="middle" style="vertical-align: left;" >
+									<h2>
+											Notifications</h2>			
+												<div class="col-md-9">
+												<div class="alert alert-purple alert-dismissable">
+													<span class="glyphicon glyphicon-certificate"></span>
+													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+														×</button>Your <strong>Pre Order</strong> is <a href="http://www.jquery2dotnet.com"
+															target="_blank">confirmed</a> .</div>
+												<div class="alert alert-danger-alt alert-dismissable">
+													<span class="glyphicon glyphicon-certificate"></span>
+													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+														×</button>Your <strong>Packet ID</strong> :2 have a due amount of <a href="http://www.jquery2dotnet.com"
+															target="_blank"> 97 rupees</a>. </div>
+												<div class="alert alert-success-alt alert-dismissable">
+													<span class="glyphicon glyphicon-certificate"></span>
+													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+														×</button>Your requested  <strong>component </strong> <a href="http://www.jquery2dotnet.com"
+															target="_blank">10 ohm resistor</a> is available now.</div>
+										</div>
+										<!-- <div class="alert alert-danger-alt alert-dismissable">
+												<span class="glyphicon glyphicon-certificate"></span>
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+													×</button>Lab will be <strong>CLOSED </strong> on <a href="http://www.jquery2dotnet.com"
+														target="_blank">This Friday.</a> Sorry for the inconvenience. </div>
+											 
+										</td> -->
+										</tr> 
+						</table>	
+					 
+					<!-- </div> -->
 				</div>
-            </div>
-        </section>
-        <!--================End Home Banner Area =================-->
+				
+			</section>
+		
+		{% endblock %}
+
+		
+		<!--================End Home Banner Area =================-->
         
         <!--================Feature Product Area =================-->
-        <section class="feature_product_area">
-        	<div class="main_box">
-				<div class="container">
-					<div class="row hot_product_inner">
-						<div class="col-lg-6">
-							<div class="hot_p_item">
-								<img class="img-fluid" src="img/product/hot-product/hot-p-1.jpg" alt="">
-								<div class="product_text">
-									<h4>Hot Deals of <br />this Month</h4>
-									<a href="#">Shop Now</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="hot_p_item">
-								<img class="img-fluid" src="img/product/hot-product/hot-p-2.jpg" alt="">
-								<div class="product_text">
-									<h4>Hot Deals of <br />this Month</h4>
-									<a href="#">Shop Now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="feature_product_inner">
-						<div class="main_title">
-							<h2>Featured Products</h2>
-							<p>Who are in extremely love with eco friendly system.</p>
-						</div>
-						<div class="feature_p_slider owl-carousel">
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-1.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-2.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-3.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-4.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-1.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-2.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-3.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="item">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-4.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-        	</div>
-        </section>
-        <!--================End Feature Product Area =================-->
         
-        <!--================Deal Timer Area =================-->
-        <section class="timer_area">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>Exclusive Hot Deal Ends Soon!</h2>
-        			<p>Who are in extremely love with eco friendly system.</p>
-        			<a class="main_btn" href="#">Shop Now</a>
-        		</div>
-        		<div class="timer_inner">
-					<div id="timer" class="timer">
-						<div class="timer__section days">
-							<div class="timer__number"></div>
-							<div class="timer__label">days</div>
-						</div>
-						<div class="timer__section hours">
-							<div class="timer__number"></div>
-							<div class="timer__label">hours</div>
-						</div>
-						<div class="timer__section minutes">
-							<div class="timer__number"></div>
-							<div class="timer__label">Minutes</div>
-						</div>
-						<div class="timer__section seconds">
-							<div class="timer__number"></div>
-							<div class="timer__label">seconds</div>
-						</div>
-					</div>
-				</div>
-        	</div>
-        </section>
-        <!--================End Deal Timer Area =================-->
-        
-        <!--================Latest Product Area =================-->
-        <section class="feature_product_area latest_product_area">
-        	<div class="main_box">
-				<div class="container">
-					<div class="feature_product_inner">
-						<div class="main_title">
-							<h2>Latest Products</h2>
-							<p>Who are in extremely love with eco friendly system.</p>
-						</div>
-						<div class="latest_product_inner row">
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-1.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-2.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-3.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-4.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-5.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-6.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-7.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="f_p_item">
-									<div class="f_p_img">
-										<img class="img-fluid" src="img/product/feature-product/f-p-8.jpg" alt="">
-										<div class="p_icon">
-											<a href="#"><i class="lnr lnr-heart"></i></a>
-											<a href="#"><i class="lnr lnr-cart"></i></a>
-										</div>
-									</div>
-									<a href="#"><h4>Long Sleeve TShirt</h4></a>
-									<h5>$150.00</h5>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-        	</div>
-        </section>
-        <!--================End Latest Product Area =================-->
-        
-        <!--================Clients Logo Area =================-->
-        <section class="clients_logo_area">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>Top Brands of this Month</h2>
-        			<p>Who are in extremely love with eco friendly system.</p>
-        		</div>
-        		<div class="clients_slider owl-carousel">
-        			<div class="item">
-        				<img src="img/clients-logo/c-logo-1.png" alt="">
-        			</div>
-        			<div class="item">
-        				<img src="img/clients-logo/c-logo-2.png" alt="">
-        			</div>
-        			<div class="item">
-        				<img src="img/clients-logo/c-logo-3.png" alt="">
-        			</div>
-        			<div class="item">
-        				<img src="img/clients-logo/c-logo-4.png" alt="">
-        			</div>
-        			<div class="item">
-        				<img src="img/clients-logo/c-logo-5.png" alt="">
-        			</div>
-        		</div>
-        	</div>
-        </section>
-        <!--================End Clients Logo Area =================-->
-        
-        <!--================Most Product Area =================-->
-        <section class="most_product_area">
-        	<div class="main_box">
-				<div class="container">
-					<div class="main_title">
-						<h2>Most Searched Products</h2>
-						<p>Who are in extremely love with eco friendly system.</p>
-					</div>
-					<div class="row most_product_inner">
-						<div class="col-lg-3 col-sm-6">
-							<div class="most_p_list">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-1.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-2.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-3.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-sm-6">
-							<div class="most_p_list">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-4.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-5.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-6.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-sm-6">
-							<div class="most_p_list">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-7.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-8.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-9.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-sm-6">
-							<div class="most_p_list">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-10.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-11.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/most-product/m-product-12.jpg" alt="">
-									</div>
-									<div class="media-body">
-										<a href="#"><h4>Black lace Heels</h4></a>
-										<h3>$189.00</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-        	</div>
-        </section>
- {% endblock %}

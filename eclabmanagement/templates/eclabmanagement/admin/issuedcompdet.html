@@ -3,10 +3,10 @@
 {% block content %}
 
         <section class="banner_area">
-            <div class="banner_inner d-flex align-items-center">
+            <div class="banner_inner d-flex align-items-center bg-primary">
                 <div class="container">
                     <div class="banner_content text-center">
-                        <h2>Search Results</h2>
+                        <h2>Issued Component details</h2>
                         <!--<div class="page_link">
                             <a href="index.html">Home</a>
                             <a href="cart.html">Cart</a>
@@ -25,35 +25,26 @@
                             <th scope="col">S-no</th>
                             <th scope="col">Student name</th>
                             <th scope="col">Packet</th>
+                            <th scope="col">Issue Date</th>
+                            <th scope="col">return date</th>
+                            <th scope="col">Returned Date</th>
                             <th scope="col">Due Amount</th>
                             
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+
+                          {% if all_details %}
+                            {% for each_detail in all_details%}
+                              <tr>
+                                
+                                {% for each_minute in each_detail %}
+                                  <td>{{ each_minute }}</td>
+                                {% endfor %}
+                              </tr>
+                            {% endfor %}
+                          {% endif %}
+                          
                         </tbody>
                       </table>
                 </div>

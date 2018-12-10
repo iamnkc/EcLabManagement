@@ -1,0 +1,51 @@
+{% extends 'eclabmanagement/admin/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="banner_area ">
+        <div class="banner_inner d-flex align-items-center bg-primary">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>List Of components</h2>
+                    <!--<div class="page_link">
+                        <a href="index.html">Home</a>
+                        <a href="cart.html">Cart</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart_area">
+            <div class="container" style="padding-top:0px;">
+                    <div class="table-responsive table-bordered ">
+                    <table class="table ">
+                            <thead class="thead-dark">
+                              
+                              <tr>
+                                <th scope="col">S-no <!--button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'comp_id' %}';"><i class="up"></i></button> <button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'comp_idR' %}';"><i class="down"></i></button!--></th>
+                                <th scope="col">Model-name <!--button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'comp_name' %}';"><i class="up"></i></button> <button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'comp_nameR' %}';"><i class="down"></i></button></i!--></th>
+                                <th scope="col">available <!--button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'count' %}';"><i class="up"></i></button> <button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'countR' %}';"><i class="down"></i></button!--></th>
+                                <th scope="col">cost <!--button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'cost' %}';"><i class="up"></i></button> <button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'costR' %}';"><i class="down"></i></button!--></th>
+                                <th scope="col">type <!--button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'type_of_comp' %}';"><i class="up"></i></button> <button class="btn btn-outline-primary" onclick="location.href='{% url 'showcomps' 'type_of_compR' %}';"><i class="down"></i></button!--></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% if all_details %}
+                                {% for each_detail in all_details%}
+                                  <tr>
+                                    
+                                    {% for each_minute in each_detail %}
+                                      <td>{{ each_minute }}</td>
+                                    {% endfor %}
+                                  </tr>
+                                {% endfor %}
+                              {% endif %}
+                            </tbody>
+                          </table>
+                    </div>
+            </div>
+    </section>
+        
+{% endblock %}

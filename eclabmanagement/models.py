@@ -64,12 +64,13 @@ class review(models.Model):
 	avg_rating = models.FloatField()
 	no_of_reviews = models.IntegerField()
 
-class request(models.Model):
+class requestcomp(models.Model):
 	roll_no = models.ForeignKey(Student,on_delete=models.CASCADE)
 	name_of_comp = models.CharField(max_length=200)
 	quantity = models.IntegerField()
 	price = models.IntegerField()
 	approval_status = models.CharField(max_length=200)
+	on_date = models.DateField(("Date"),null=True,blank=True)
 
 class cart(models.Model):
 	roll_no = models.ForeignKey(Student,on_delete=models.CASCADE)

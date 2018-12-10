@@ -1,0 +1,142 @@
+{% extends 'eclabmanagement/student/base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center bg-primary">
+        <div class="container">
+          <div class="banner_content text-center">
+            <h2>Search Results</h2>
+            <!--<div class="page_link">
+              <a href="index.html">Home</a>
+              <a href="cart.html">Cart</a>
+            </div> -->
+          </div>
+        </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Cart Area =================-->
+        <section class="cart_area">
+          <div class="container">
+          <center>
+          <h4>Search Results for "{{input}}"</h4>
+            <div class="cart_inner">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Type Of Component</th>
+                  <th scope="col">Availability</th>
+                  <th scope="col">Cost</th>
+                  <th scope="col">Premium Component</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for each_comp in comp_obj %}
+                  <tr>
+                  <td>
+                    <div class="media">
+                      
+                      <div class="media-body">
+                        <p>{{each_comp.comp_name}}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td><p>{{each_comp.type_of_comp}}</p></td>
+                  <td>
+                    <p>{{each_comp.count}}</p>
+                  </td>
+                  <td>
+                    <p>{{each_comp.cost}}</p>
+                  </td>
+                  <td>
+                      {% ifequal each_comp.level True %}
+                        <p>Yes</p>
+                      {% else %}
+                        <p>No</p>
+                      {% endifequal %}
+                  </td>
+                  <!-- {% comment %}
+                  <td>
+                      <a href="#" class="main_btn" name = "{{each_comp.comp_name}},{{each_comp.count}}" id='this' data-toggle="modal" data-target="#addPostModal">
+                                Add to Cart
+                        </a>
+                  </td>
+                  {% endcomment %} -->
+                </tr>
+
+
+                {% endfor %}
+
+                
+
+
+                <!-- <tr class="">
+                  <td><div class="checkout_btn_inner">
+                    <a class="main_btn" href="#">Continue Shopping</a>
+                    </div></td>
+                  <td></td>
+                  <td>
+                    <div class="checkout_btn_inner">
+                      <a class="main_btn" href="#">Proceed to checkout</a>
+                    </div>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+            </div>
+          </div>
+          </center>
+        </section>
+
+       <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+
+
+        {% comment %} <div class="bg-secondary text-white">
+          <center><h3 class="modal-title">Component Description</h3></center>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div> {% endcomment %}
+        <div class="s_product_text">
+          
+            <center><h3 class = "modal-title"><script>h = document.getElementById('this').name
+                h = h.split(",")
+                document.write(h[0])</script></h3></center>
+              <div class="banner_content text-center col-md-6 offset-md-3">
+                <p>Select the Quantity</p>
+                </div>
+                <center> 
+                <ul class="list">
+                    <li><a href="#"><span>Availibility</span><script>h = document.getElementById('this').name
+                        h = h.split(",")
+                        document.write(h[1])</script></a></li>
+                </ul></center><br>
+                
+                <form >
+                  <center><div class="product_count form-group">
+                    <label for="qty">Quantity:</label>
+                    <input type="text" value="" placeholder="enter">
+                    <!-- <input type="text" name="qty" id="sst" maxlength="22" value="1" title="Quantity:" class="input-text qty" style="width: 70px; length:50px">
+                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button> 
+                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button> -->
+                </div></center><br><br>
+                
+                <div class="card_area form-group">
+                    <center><a class="main_btn" href="{% url 'index'%}">Add to Cart</a></center>
+                </div>
+            </form>
+            </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

@@ -6,14 +6,28 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
-        <title>ListAshop</title>
-        <!-- Bootstrap CSS -->
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+        <link rel="icon" href="{% static "img/chip.png" %}" type="image/png">
+        <title>Ec Lab Management</title>
+        <!--search bootstrap-->
+        <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            
+         --><!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static "css/notification.css" %}">
+        <link rel="stylesheet" href="{% static "css/search.css" %}">
         <link rel="stylesheet" href="{% static "css/studentprof.css" %}">
+        <link rel="stylesheet" href="{% static "css/button.css" %}">
+        
+        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static "vendors/linericon/style.css" %}">
         <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
@@ -22,58 +36,94 @@
         <link rel="stylesheet" href="{% static "vendors/nice-select/css/nice-select.css" %}">
         <link rel="stylesheet" href="{% static "vendors/animate-css/animate.css" %}">
         <link rel="stylesheet" href="{% static "vendors/jquery-ui/jquery-ui.css" %}">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
         <!-- main css -->
         <link rel="stylesheet" href="{% static "css/style.css" %}">
         <link rel="stylesheet" href="{% static "css/responsive.css" %}">
-        <style>
-        {% block style %}
+        {% block js %}
         {% endblock %}
-        </style>
+        <style>
+            i {
+              border: solid white;
+              border-width: 0 3px 3px 0;
+              display: inline-block;
+              padding: 3px;
+            }
+            
+        
+            
+            .up {
+                transform: rotate(-135deg);
+                -webkit-transform: rotate(-135deg);
+                color:white;
+            }
+            
+            .down {
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                color:white;
+            }
+            </style>
     </head>
     <body>
     <header class="header_area">
             <div class="main_menu">
-            	<nav class="navbar navbar-expand-lg navbar-light ">
-					<div class="container">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="{% static "img/logo.png" %}" alt=""></a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-							<ul class="nav navbar-nav menu_nav ml-auto">
-								<ul class="nav navbar-nav menu_nav ml-auto">
-                                <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-                                
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Add Component</a></li>
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark p-0">
+                        &emsp;&emsp;&emsp;
+                        <a href="#" class="previous" onclick="goBack()" style="border-radius: 50%; color:white"><h1>&#8249;</h1></a>
+<!-- 
+                        <button onclick="goBack()" class="btn btn-primary">back</button> -->
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                       
+        
+       
+                        <a class="navbar-brand logo_h" href="index.html"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 65px; height: 65px; margin-right: 8px;"></a>
+                        <h3 style="color:white">EC Lab Management</h3>
+                        {% if user.is_authenticated  %}
+               
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item "><a class="nav-link" href="{% url 'adminhome' %}">Home</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="{% url 'showcomps' 1 %}">Components</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'addcomp' %}">Add Component</a></li>
                                  
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Components</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Issue</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">Return</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact.html">SignOut</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'componenttype' %}">List Components</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'issuecomponent' %}">Issue Comp</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'returncomponent' %}">Return Comp</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'signin' %}">SignOut</a></li>
                             </ul>
-						</div>
-					</div>
-            	</nav>
+                        </div>
+                        {% endif %}
+                    </div>
+                </nav>
+                
             </div>
         </header>
     {% block content %}
     {% endblock %}
-    <footer class = "footer-anew">
+
+    <footer class = "footer-anew bg-dark">
                 <div class="row footer-bottom d-flex justify-content-between align-items-center"></div>
                     <p class="col-lg-12 footer-text text-center">B-03</p>
                 </div>
         </footer>
+        <script>
+                function goBack() {
+                    window.history.back();
+                }
+                </script>
         <script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
         <script src="{% static "js/popper.js" %}"></script>
         <script src="{% static "js/bootstrap.min.js" %}"></script>
-        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="{% static "js/stellar.js" %}"></script>
         <script src="{% static "vendors/lightbox/simpleLightbox.min.js" %}"></script>
@@ -87,5 +137,37 @@
         <script src="{% static "vendors/counter-up/jquery.waypoints.min.js" %}"></script>
         <script src="{% static "vendors/counter-up/jquery.counterup.js" %}"></script>
         <script src="{% static "js/theme.js" %}"></script>
+        <script src="{% static "js/student-profile.js" %}"></script>
+        <script src="{% static "js/mustache.js" %}"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <script src="http:/code.jquery.com/jquery-1.9.1.js"></script>
+        <script>
+            function toggle1(source){
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                //console.log(checkboxes.length);
+                len = checkboxes.length;
+                var count = 0;
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+                for (var i = 0; i < checkboxes.length-1; i++) {
+                    if (checkboxes[i].checked == true)
+                        count = count + 1 ;
+                }
+                //console.log(count)
+                if(count==len-1){
+                    checkboxes[len-1].checked = true;
+                }else{
+                    checkboxes[len-1].checked = false;
+                }
+            }
+            function toggle(source) {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i] != source)
+                        checkboxes[i].checked = source.checked;
+                }
+            }
+        </script>
     </body>
 </html>
