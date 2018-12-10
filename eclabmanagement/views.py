@@ -16,12 +16,15 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import datetime
+<<<<<<< HEAD
 import requests 
 import json
 #from .forms import UserForm
 from django.contrib.auth.models import User
 from django.db.models import Max
 
+=======
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
 
 #@login_required(login_url='/')
 def signin(request):                                                  #function for user authentication
@@ -45,7 +48,11 @@ def signin(request):                                                  #function 
             return render(request, 'eclabmanagement/student/login.html', {'status': 'Invalid credentials'})
     return render(request, 'eclabmanagement/student/login.html')
 
+<<<<<<< HEAD
 @login_required(login_url='/')
+=======
+#@login_required(login_url='/')
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
 def logout_view(request):                                           #function for logout
     logout(request)
     return redirect('/')
@@ -80,6 +87,7 @@ def requestcomponent(request):
         return redirect('/studenthome')
     return render(request,'eclabmanagement/student/requestcomponent.html')
 
+<<<<<<< HEAD
 @login_required(login_url='/')
 def studentprofile(request):
     roll_no = request.user
@@ -104,11 +112,31 @@ def searchresult(request):                                      #search algorith
     context = {'comp_obj':comp_obj,'input':input}
     return render(request,'eclabmanagement/admin/searchresult.html',context)
 
+=======
+@login_required(login_url='/')
+def studentprofile(request):
+    return render(request,'eclabmanagement/student/student-profile.html')
+
+@login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
+def searchresult(request):                                      #search algorithm
+    if(request.method == 'POST'):
+        input = request.POST['input']
+        if(input==''):
+            return redirect('/adminhome')
+        input = input.lower()
+        comp_obj = component_detail.objects.filter(type_of_comp__contains = input)
+    context = {'comp_obj':comp_obj,'input':input}
+    return render(request,'eclabmanagement/admin/searchresult.html',context)
+
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
 """@staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def issuedcompdet(request):
 	return render(request,'eclabmanagement/admin/issuedcompdet.html')
 """
+<<<<<<< HEAD
 @login_required(login_url='/')
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
@@ -212,19 +240,131 @@ def addcomp(request):                               #function for adding the com
     return render(request,'eclabmanagement/admin/addcomponent.html',{'li':li,'li1':li1})
 
 @login_required(login_url='/')
-@staff_member_required(login_url='/index')
+=======
 @login_required(login_url='/')
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
+def issuedcompdet(request):                                 #to show all the users who have taken components
+    issued_obj = issue_detail.objects.all()                 #along with the fine amount if any
+    lis = []
+    count = 0
+    today = datetime.date.today()
+
+    for each_detail in issued_obj:
+        allowed = each_detail.no_of_days
+        issued = each_detail.issue_date
+        completed = today - issued
+        n_of_days = completed.days
+        return_date = issued + datetime.timedelta(days=int(allowed))
+        if(n_of_days > allowed):
+            due = (n_of_days - allowed)*(each_detail.fine_p_day)
+        else:
+            due = 0
+        lis.append([])
+        number = each_detail.roll_no_id
+        temp = Student.objects.get(roll_no=number)
+        p_id = each_detail.packet_id
+        if(each_detail.returned_date):
+            dat = each_detail.returned_date
+        else:
+            dat = 'not returned'
+        lis[count].append(count+1)
+        lis[count].append(temp.first_name)
+        lis[count].append(p_id)
+        lis[count].append(each_detail.issue_date)
+        lis[count].append(return_date)
+        lis[count].append(dat)
+        lis[count].append(due)
+        
+        count = count + 1
+    context = { 'all_details' : lis }
+    return render(request,'eclabmanagement/admin/issuedcompdet.html',context)
+
+@login_required(login_url='/')
+<<<<<<< HEAD
+def comptypelist(request,x):
+    comp_obj = component_detail.objects.filter(type_of_comp=x)
+    return render(request,'eclabmanagement/admin/comptypelist.html',{'comp_obj':comp_obj})
+=======
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
+def addcomp(request):                               #function for adding the components
+    if(request.method == 'POST'):					#taking input from the form
+        comp_name = request.POST['comp_name']
+        temp = comp_name.split(' ')
+        comp_name = '_'.join(temp)
+        comp_type = request.POST['comp_type']
+        temp = comp_type.split(' ')
+        comp_type = '_'.join(temp)
+        quantity = request.POST['quantity']
+        quantity = int(quantity)
+        cost = request.POST['cost']
+        cost = int(cost)
+        try:
+            level=request.POST['level']
+        except KeyError:
+            level="0"
+        comp_det_same = component_detail.objects.filter(comp_name=comp_name)
+        if(len(comp_det_same) < 1):
+            comp_det_obj = component_detail()
+            comp_det_obj.comp_name = comp_name
+            comp_det_obj.type_of_comp = comp_type
+            comp_det_obj.count = int(quantity)
+            comp_det_obj.cost = cost
+            if(level == '1'):
+                comp_det_obj.level = True
+                comp_det_obj.save()
+                for i in range(0,int(quantity)):
+                    comp_obj = component()
+                    comp_obj.comp_id = comp_det_obj
+                    comp_obj.status = 'not_issued'
+                    comp_obj.save()
+            else:
+                comp_det_obj.level = False
+                comp_det_obj.save()
+                comp_obj = component()
+                comp_obj.comp_id = comp_det_obj
+                comp_obj.status = 'not_issued'
+                comp_obj.save()
+        else:
+            obj = comp_det_same[0]
+            obj.count = obj.count + int(quantity)
+            obj.cost = int(cost)
+            obj.save()
+            if(obj.level == True):
+                for i in range(0,int(quantity)):
+                    comp_obj = component()
+                    comp_obj.comp_id = obj
+                    comp_obj.status = 'not_issued'
+                    comp_obj.save()
+        return redirect('/adminhome')
+    all = component_detail.objects.all()
+    li = []
+    li1 = []
+    for x in all :
+        if x.type_of_comp not in li:
+            li.append(x.type_of_comp)
+        if x.comp_name not in li1:
+            li1.append(x.comp_name)
+    return render(request,'eclabmanagement/admin/addcomponent.html',{'li':li,'li1':li1})
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
+
+@login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def comptypelist(request,x):
     comp_obj = component_detail.objects.filter(type_of_comp=x)
     return render(request,'eclabmanagement/admin/comptypelist.html',{'comp_obj':comp_obj})
 
 @login_required(login_url='/')
 @staff_member_required(login_url='/index')
-@login_required(login_url='/')
+#@login_required(login_url='/')
 def compdescription(request):
     return render(request,'eclabmanagement/admin/compdescription.html')
 
 @login_required(login_url='/')
+<<<<<<< HEAD
 @staff_member_required(login_url='/index')
 @login_required(login_url='/')
 def adminhome(request):
@@ -241,8 +381,26 @@ def adminhome(request):
 
 #This function returns all the details of packet with id given
 @login_required(login_url='/')
+=======
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
 @staff_member_required(login_url='/index')
+#@login_required(login_url='/')
+def adminhome(request):
+    try:
+        obj = requestcomp.objects.all()[len(requestcomp.objects.all())-3 : len(requestcomp.objects.all())]
+    except:
+        obj = {}
+    try:
+        obj1 = component_detail.objects.get(count = 0)
+    except:
+        obj1 = {}
+    return render(request,'eclabmanagement/admin/index.html',{'obj':obj,'obj1':obj1})
+
+
+#This function returns all the details of packet with id given
 @login_required(login_url='/')
+@staff_member_required(login_url='/index')
+#@login_required(login_url='/')
 def packetdetails(request):
     if(request.method == "POST"):
         packet_id = request.POST['packet_id']
@@ -279,7 +437,11 @@ def packetdetails(request):
 
 @login_required(login_url='/')
 @staff_member_required(login_url='/index')
+<<<<<<< HEAD
 @login_required(login_url='/')
+=======
+#@login_required(login_url='/')
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
 def returncomponent(request):
     return render(request,'eclabmanagement/admin/packetIDsearch.html')
 
@@ -388,6 +550,7 @@ def issuecomponent(request):
 @staff_member_required(login_url='/index')
 def notification(request):
     obj = requestcomp.objects.all()
+<<<<<<< HEAD
     return render(request,'eclabmanagement/admin/notif.html',{'obj':obj})
 
 def test(request):                                                                                                          
@@ -494,3 +657,6 @@ def studenthome(request,token):
     print(email)
     if email:
         return render(request,'eclabmanagement/student/index.html')
+=======
+    return render(request,'eclabmanagement/admin/notif.html',{'obj':obj})
+>>>>>>> 603b552c1ac874a0f1941594d27809140817336b
